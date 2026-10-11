@@ -1,8 +1,9 @@
 ```yaml
 # ── Blueprint metadata (machine-readable; the panel generator and the back-office builder read this block) ──
 blueprint:
-  aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL. Only cores carry a [ORG]AIOC code.
-  full_name: "<Full name>"                # e.g. Operating Core Office
+  aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL or TenAIOC-SL. Only cores carry a [ORG]AIOC code; it never changes when the AIOC moves.
+  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]HOAC-TM; its place, never part of its code
+  full_name: "<Full name>"                # e.g. Organization Core Office
   organisation: "<organisation>"          # e.g. Ten
   type: "<foundational | structural | specialised | connector | other>"   # why the AIOC exists; a card field, never part of the name
   org_aion: "<[ORG]AION>"                # the [ORG]AION this AIOC belongs to, e.g. TenAION
@@ -10,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v1.0.0"
+    version: "v1.1.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -26,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v1.0.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v1.1.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
 >
@@ -49,7 +50,9 @@ blueprint:
 | Code | `<[ORG]AIOC-INITIALS>`, checked for collisions (Naming Standard §5) |
 | Full name | `<Full name>`, written beside the code once |
 | Description | "`<code>` is `<organisation>`'s `<full name>` core, built from `<Library blueprint name>`" |
-| Kind | core (only cores have blueprints at this level) |
+| Kind | AIOC |
+| Parent | the code of the unit that holds this AIOC, or `none` (Naming Standard R14); a change needs the approval of the human seat over this AIOC |
+| Inner units | the codes of the units this AIOC holds, AIOC or HOAC, each linked to its own card and blueprint, or "none" (Standard §1.7) |
 | Type | `<Foundational / Structural / Specialised / Connector / other (described)>`: why this AIOC exists (`docs/WHAT-IS-AN-AIOC.md` §4). |
 | `[ORG]AION` | `<[ORG]AION>`, based on 49GAION Standard `<version>` |
 | Versioned Definition | this file, at `<commit>`; the Panel and the Back office are built from it |
@@ -70,11 +73,14 @@ blueprint:
 
 ## 1. Card (49GAION Operating Protocol §4)
 
-The card declares what this AIOC receives, what it delivers, and in what format. It is the only card for this AIOC; the protocol AIOC's map reads it from here. It follows `spec/schemas/aioc-card.schema.json` in `49g-holding/49GAION-protocol`.
+The card declares what this AIOC receives, what it delivers, and in what format. It is the only card for this AIOC; the protocol AIOC's map reads it from here. It follows `spec/schemas/unit-card.schema.json` in `49g-holding/49GAION-protocol`.
 
 ```yaml
 card:
-  aioc: "<code>"
+  unit_kind: "AIOC"
+  code: "<code>"
+  parent: "<code of the holding unit, or none>"
+  inner_units: ["<code>"]                 # by link; empty if none
   type: "<foundational | structural | specialised | connector | other>"   # required; if other, add type_description
   org_aion: "<[ORG]AION>"
   card_version: "<vN.N.N>"
@@ -111,7 +117,7 @@ The design uses general terms; this table says what each term is in this organis
 | Term in the blueprint | In `<organisation>` |
 |---|---|
 | The Top Office (the only centre of decision) | |
-| **The AI Office responsible for this unit** (every `[ORG]HOAC-ACS` request about this unit's AIs goes to it) | |
+| **`[ORG]AIOC-OCO`** (every `[ORG]HOAC-ACS` request about this unit's AIs goes to it) | |
 | The engineering division | |
 | The IT and infrastructure division | |
 | The builder of every tool | |
@@ -200,7 +206,7 @@ One block per function the AIOC performs. Use the **four-part capability form** 
 ## 6. Coordination and routes
 - **Whom it works with**, and the route to each: always through the 49GAION Operating Protocol (one Work Item per hand-off; this AIOC's Chief of Staff as its door).
 - **Routing rows this AIOC contributes** to the routing table of its `[ORG]AION`.
-- **Requests and objections.** Owners do not design or change this AIOC's AIs: every proposal, correction or critique is a `design-proposal` Work Item to the **AI Office responsible for this unit**; where they disagree, the `[ORG]HOAC-ACS` seat may hold the objection open until it reaches the HOAC seat accountable for that AI Office, which decides.
+- **Requests and objections.** Owners do not design or change this AIOC's AIs: every proposal, correction or critique is a `design-proposal` Work Item to **OCO**; where they disagree, the `[ORG]HOAC-ACS` seat may hold the objection open until it reaches the HOAC seat accountable for OCO, which decides.
 
 ## 7. Records and where things live
 | Record | Home | Source rule |
@@ -231,7 +237,7 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 | Panel | | | — | `NOT_RUN` |
 
 - **Re-run triggers:** any change to a model, instructions, this AIOC's card, this blueprint or the 49GAION Operating Protocol re-runs the affected tests automatically; also any change to tools or access, an Input socket converter or the AIOC's standard format, or any shared panel part.
-- **Evidence levels:** `MEASURED_IN_BUILD_ENVIRONMENT` ranks above `OWNER_ATTESTED`; only a measured score counts toward widening authority (the owner requests with the score attached; the `[ORG]HOAC-ACS` seat decides and the AI Office responsible for this unit prepares, checks and carries out).
+- **Evidence levels:** `MEASURED_IN_BUILD_ENVIRONMENT` ranks above `OWNER_ATTESTED`; only a measured score counts toward widening authority (the owner requests with the score attached; the `[ORG]HOAC-ACS` seat decides and OCO prepares, checks and carries out).
 - **Complete** only when every capability's test has a visible result.
 
 ## 10. Build: what is generated from this file
@@ -264,15 +270,16 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 
 | Slot | Value | Default offered by 49GAION | Set by | Date | Version | Replaces |
 |---|---|---|---|---|---|---|
-| HOAC seat accountable for the AI Office this unit works under (decides objections held open; Protocol §4.7) | | none: must be set | | | | |
-| AI Office responsible for this unit (receives `[ORG]HOAC-ACS` requests and alone merges blueprint changes) | | none: must be set | | | | |
+| HOAC seat accountable for OCO (decides objections held open; Protocol §4.7) | | none: must be set | | | | |
+| OCO of this `[ORG]AION` (receives `[ORG]HOAC-ACS` requests and carries out approved blueprint changes) | | none: must be set | | | | |
 | Discussion limits (how far a discussion may go, and how requests are weighed) | | none: must be set | | | | |
 | Waiting deadlines (per status) | | none: must be set | | | | |
 | Bounce limit | | none: must be set | | | | |
-| Chain depth | | none: must be set | | | | |
+| Chain depth (maximum depth of Work Item chains; set by the organisation, no fixed cap) | | none: must be set | | | | |
 | Halt-request priority | | immediate | | | | |
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
-| Final authority (each `[ORG]AION` fills it; on the objection path it is the human accountable for the Office, first row) | | none: must be set | | | | |
+| Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
+| Final authority (each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
 
 ---
 
@@ -350,4 +357,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.0.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v1.1.0 · Powered by 49GAION*

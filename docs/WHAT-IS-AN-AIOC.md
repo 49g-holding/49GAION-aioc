@@ -1,14 +1,14 @@
 # What an AIOC is
 
-**Version `v1.0.0` · approved by Iman Tajik (Founder).** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
+**Version `v1.1.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
 
 ## 1. Definition
 
-An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION` and sits at the unit level beside the human unit, the HOAC. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
+An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION`. It is a unit like the human unit, the HOAC; neither kind ranks above the other by its kind. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
 
 49GAION is an organisation design framework: a framework for building organisations from interchangeable AI and human parts.
 
-**The product: `[ORG]AION`.** 49GAION's product is `[ORG]AION`, the AI Operating Nexus of one organisation (for example "Nike AION, Powered by 49GAION"). Each `[ORG]AION` is built for one organisation and is not public. It is a complete organisation design: it contains its own Standard, Protocol, Library, Self-Improvement, AIOCs and HOACs, and the organisation is built from it. It has its own `[ORG]HOAC-GOV` from day one, so its top authority is that organisation, not 49GAION, and it stands on its own Human Floor. Every AIOC in an `[ORG]AION` has its own runtime, woken from its queue. The AION Builder builds each `[ORG]AION` over a design period; once delivered, the `[ORG]AION` belongs entirely to the customer.
+**The product: `[ORG]AION`**, the AI Operating Nexus of one organisation; its one definition is in the 49GAION Standard, §1.3, item 1 ([`49GAION/upstream/49GAION-UPSTREAM.md`](https://github.com/49g-holding/49GAION/blob/main/upstream/49GAION-UPSTREAM.md)).
 
 ## 2. Anatomy
 
@@ -40,13 +40,13 @@ Every AIOC has a **Type**, recorded on its card, never in its name. The Type say
 | **Specialised** | The business needs it |
 | **Connector** | Other AIOCs must be connected and coordinated |
 
-The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the highest executive of the AIOCs (Standard §4.2).
+The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: every AIOC, at any depth, joins, is fixed, maintained and upgraded through it; it gives no orders on what work is done. `[ORG]HOAC-TM` is the human hub: it decides and orders. OCO sits under TM: TM orders it, meets its human needs and is its accountable seat; TM and `[ORG]HOAC-GOV` may each stop it (Standard §4.2, §4.3).
 
-## 5. The accountable seat and the responsible AI Office
+## 5. The accountable seat and OCO
 
 1. Where an AIOC has an `[ORG]HOAC-ACS` seat, that seat is accountable for its results. It oversees, receives reports, may request anything for the unit, and never builds or changes the AIs directly (Standard §4.2, item 6).
-2. The seat's requests go to the AI Office responsible for that unit. Where they disagree, the AI Office does not decide: the seat may hold the objection open until it reaches the HOAC seat accountable for that AI Office, which decides (Standard §4.2, item 7).
-3. A change to an AI's authority (capacity, skills, bots, access, budget) is decided by the `[ORG]HOAC-ACS` seat; the AI Office responsible for that unit prepares, checks and carries it out.
+2. The seat's requests go to OCO. Where they disagree, OCO does not decide: the seat may hold the objection open until it reaches the HOAC seat accountable for OCO, which decides (Standard §4.2, item 7).
+3. A change to an AI's authority (capacity, skills, bots, access, budget) is decided by the `[ORG]HOAC-ACS` seat; OCO prepares, checks and carries it out.
 
 ## 6. Runtime
 
@@ -54,13 +54,13 @@ Every AIOC has its own runtime, woken from its queue.
 
 ## 7. Ports and stop
 
-Every AIOC has two inputs and two outputs, typed AI or HU, each with a Port card, and a mandatory, queue-less stop port of type HU (Standard §6.1, §4.3). An `[ORG]AION` is handed over only when the stop ports of all its units, its `[ORG]HOAC-GOV` and its Human Floor are in place (Standard §1.4).
+Every AIOC has one input and one output of each kind (AI and HU), each with a Port card, plus the stop door: a mandatory, queue-less stop port of type HU, enforced outside the unit (Standard §6.1, §4.3). Stopping an AIOC stops every unit inside it; a human port never passes through an AI unit. An `[ORG]AION` is handed over only when the stop ports of all its units, its `[ORG]HOAC-GOV` and its Human Floor are in place (Standard §1.4).
 
 ## 8. The Library, lineage, merge and split
 
 1. Every AIOC blueprint is an entry in the 49GAION Library: built once, configured per `[ORG]AION`, never rebuilt. During the design of an `[ORG]AION`, the blueprint of any capability not already in the 49GAION Library is added back to it, generalised and tested.
 2. Each AIOC card records its lineage: which AIOCs and versions it came from.
-3. 49GAION Self-Improvement proposes merging overlapping AIOCs and splitting AIOCs that have grown too broad; it carries them out after Iman's decision. No AIOC is deleted, only replaced, and no fixed test is lost.
+3. Self-Improvement may propose merging overlapping AIOCs or splitting an AIOC that has grown too broad. In an `[ORG]AION` the proposal is decided by `[ORG]HOAC-TM` and carried out through OCO; in 49GAION it is decided by the governing seat (GOV) of 49GAION (Standard §2). No AIOC is deleted, only replaced, and no fixed test is lost.
 
 ## 9. Blueprints and versions
 
@@ -68,6 +68,13 @@ Every AIOC has two inputs and two outputs, typed AI or HU, each with a Port card
 2. An organisation configures it in its `[ORG]AION` and records which version it took. Configuration lives in the blueprint's Configuration section; an AIOC with an empty slot does not join.
 3. Lessons return to the mother blueprint as tested proposals.
 
-## 10. Working with other AIOCs
+## 10. Composition
 
-AIOCs exchange work only through the 49GAION Operating Protocol: a card per AIOC, one Work Item per hand-off, typed ports (two inputs, two outputs, AI/HU, plus a stop door), an input check on arrival, links to sources instead of copies.
+1. An AIOC may be composed of smaller units of either kind, AIOCs and HOACs, to any depth; an AIOC may itself sit inside an AIOC or a HOAC (Standard §1.7).
+2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door to its inner units.
+3. Every inner unit has its own card and blueprint, listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
+4. Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
+
+## 11. Working with other units
+
+AIOCs exchange work only through the 49GAION Operating Protocol: a card per AIOC, one Work Item per hand-off, ports (one input and one output of each kind, AI and HU, plus the stop door), an input check on arrival, links to sources instead of copies.
