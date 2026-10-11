@@ -1,6 +1,6 @@
 # What an AIOC is
 
-**Version `v1.0.0` · approved by Iman Tajik (Founder).** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §3.1). Where this page and the Standard differ, the Standard governs.
+**Version `v1.0.0` · approved by Iman Tajik (Founder).** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
 
 ## 1. Definition
 
