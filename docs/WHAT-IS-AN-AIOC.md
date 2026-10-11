@@ -71,7 +71,7 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 ## 10. Composition
 
 1. An AIOC may be composed of smaller units of either kind, AIOCs and HOACs, to any depth; an AIOC may itself sit inside an AIOC or a HOAC (Standard §1.7).
-2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door to its inner units.
+2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door for AI work to its inner units; the HU ports and stop doors of inner units never pass through it.
 3. Every inner unit has its own card and blueprint, listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
 4. Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
 
