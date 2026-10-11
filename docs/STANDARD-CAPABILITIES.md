@@ -1,6 +1,6 @@
 # The standard capabilities of every AIOC
 
-**Version `v1.0.0` · approved by Iman Tajik (Founder).** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
+**Version `v1.1.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
 
 ## 4.1 Office
 
@@ -22,8 +22,8 @@
 - **managing agents**, which lead and coordinate other agents through control, planning or direction;
 - **connecting agents**, which connect humans with agents: they report to a human, assist them, and carry their requests to the agents.
 
-Each unit has two typed input and two typed output ports (AI/HU) plus a stop door. The Chief of Staff is the AIOC's voice to its HOAC seat; input arrives only through the typed ports and the Input socket, and HU ports, including the stop door, never pass through an AI. Its summaries link every claim to its evidence.
-- **Duties:** intake (record every item with ID, version, status, owner); monitor and analyse the agents' reports and performance; prepare; brief the HOAC seat each morning and whenever called (decisions needed with a recommendation and consequences, status with evidence, test scores, directives replaced since the last brief); carry decisions through to closure with evidence; send lessons to its `[ORG]AION`'s Self-Improvement as proposals; open and receive Work Items for the AIOC.
+Each unit has one input and one output of each kind (AI and HU), plus the stop door. The Chief of Staff is the AIOC's voice to its HOAC seat; input arrives only through the typed ports and the Input socket, and HU ports, including the stop door, never pass through an AI. Its summaries link every claim to its evidence.
+- **Duties:** intake (record every item with ID, version, status, owner); monitor and analyse the agents' reports and performance; prepare; brief the HOAC seat each morning and whenever called (decisions needed with a recommendation and consequences, status with evidence, test scores, directives replaced since the last brief); carry decisions through to closure with evidence; send lessons to Self-Improvement, held inside `[ORG]HOAC-TM`, as proposals; open and receive Work Items for the AIOC.
 - **Limits:** no authority beyond what has been opened for it; it holds no accountability, grants no access and changes no limits; tools, access and credentials live in the Panel, never in its instructions. With no human present, it reads, records and triages only, unless the Configuration slot `unattended_action` allows more.
 
 **Process.**
