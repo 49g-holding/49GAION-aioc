@@ -44,6 +44,16 @@ if (S / "check_template_fill.py").exists():
         t.write_text("\n".join(l for l in fx.read_text().splitlines() if not l.strip().startswith(key + ":")) + "\n")
         expect(f"template-fill: removing the required key {key} fails",
                run(ROOT, sys.executable, str(S / "check_template_fill.py"), str(t), schema), f"'{key}' is a required property")
+    # Ratchet: a finding already on the base is a warning; a new finding fails.
+    def drop(keys):
+        t = pathlib.Path(tempfile.mkdtemp()) / "t.md"
+        t.write_text("\n".join(l for l in fx.read_text().splitlines() if not any(l.strip().startswith(k + ":") for k in keys)) + "\n")
+        return str(t)
+    base1 = drop(["full_name"])
+    expect("template-fill: a finding already on the base passes as a warning",
+           run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name"]), schema, base1))
+    expect("template-fill: a new finding beside one on the base fails",
+           run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name", "lineage"]), schema, base1), "'lineage' is a required property")
 
 bad = [n for n, ok in results if not ok]
 print(f"\nci-selftest: {len(results) - len(bad)}/{len(results)} cases as expected")
