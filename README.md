@@ -1,6 +1,6 @@
 # 49GAION · the AIOC
 
-**Version `v1.1.0` · approved by the governing seat (GOV) of 49GAION.**
+**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.**
 
 49GAION is an organisation design framework: a framework for building organisations from interchangeable AI and human parts. This repository holds what an AIOC (AI Operating Core) is, and the blueprint template every AIOC is filled from.
 
@@ -11,6 +11,7 @@
 | Path | Holds |
 |---|---|
 | [`docs/WHAT-IS-AN-AIOC.md`](docs/WHAT-IS-AN-AIOC.md) | The definition of an AIOC |
+| [`docs/CELLS-AND-PODS.md`](docs/CELLS-AND-PODS.md) | Cells and Pods: the parts inside an AIOC's Blueprint |
 | [`docs/STANDARD-CAPABILITIES.md`](docs/STANDARD-CAPABILITIES.md) | Default text of the standard capabilities: Chief of Staff, Office, Input socket, Panel |
 | [`template/AIOC-BLUEPRINT-TEMPLATE.md`](template/AIOC-BLUEPRINT-TEMPLATE.md) | The blueprint template |
 | [`decisions/`](decisions/) | Links to the decision records, kept once in the hub |

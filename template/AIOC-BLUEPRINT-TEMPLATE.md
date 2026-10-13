@@ -2,7 +2,7 @@
 # ── Blueprint metadata (machine-readable; the panel generator and the back-office builder read this block) ──
 blueprint:
   aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL or TenAIOC-SL. Only cores carry a [ORG]AIOC code; it never changes when the AIOC moves.
-  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]HOAC-TM; its place, never part of its code
+  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code
   full_name: "<Full name>"                # e.g. Organization Core Office
   organisation: "<organisation>"          # e.g. Ten
   type: "<foundational | structural | specialised | connector | other>"   # why the AIOC exists; a card field, never part of the name
@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v1.1.0"
+    version: "v1.3.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v1.1.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v1.3.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
 >
@@ -52,7 +52,8 @@ blueprint:
 | Description | "`<code>` is `<organisation>`'s `<full name>` core, built from `<Library blueprint name>`" |
 | Kind | AIOC |
 | Parent | the code of the unit that holds this AIOC, or `none` (Naming Standard R14); a change needs the approval of the human seat over this AIOC |
-| Inner units | the codes of the units this AIOC holds, AIOC or HOAC, each linked to its own card and blueprint, or "none" (Standard §1.7) |
+| Inner units | the codes of the AIOCs this AIOC holds, each linked to its own card and Blueprint, and of its own Pods and Cells (§17), or "none" (Standard §1.7) |
+| HOAC label | the HOAC label this AIOC carries as a whole, if any (`[ORG]HOAC-GOV`, `[ORG]HOAC-TM` or `[ORG]HOAC-ACS`) |
 | Type | `<Foundational / Structural / Specialised / Connector / other (described)>`: why this AIOC exists (`docs/WHAT-IS-AN-AIOC.md` §4). |
 | `[ORG]AION` | `<[ORG]AION>`, based on 49GAION Standard `<version>` |
 | Versioned Definition | this file, at `<commit>`; the Panel and the Back office are built from it |
@@ -61,7 +62,7 @@ blueprint:
 | Template | 49GAION AIOC Blueprint Template `<version>` at `<commit>` |
 | Mother | `<name, version>`, or "none yet" |
 | Blueprint version and status | `<vN.N.N>` · `<draft / in force / replaced>` |
-| Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the HOAC register only) |
+| Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
 | Reports to | the position or office above it |
 | Writing repository | `<org>aioc-<abbr>` (+ `-records`, `-records-restricted`) |
 | Code project | its code project, or "none" |
@@ -290,6 +291,30 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 
 The Type sets no count limit, no default connections and no mandatory sections. The Panel is a capability (§4.4), not a type. The AION Builder is a 49GAION capability, not an AIOC type (Standard §1.2).
 
+## 17. Cells and Pods
+
+The parts inside this AIOC (`docs/CELLS-AND-PODS.md`). One card per Cell and per Pod, following `spec/schemas/unit-card.schema.json` in `49g-holding/49GAION-protocol`. The role and nature of this AIOC are read from the type of its top Cell.
+
+| Code | Kind | Type | Filler kind | HOAC label | Parent | Attached to | Fixed test (owner) | External ports |
+|---|---|---|---|---|---|---|---|---|
+| `<[ORG]CELL-INITIALS>` | CELL | `<from the organisation's list>` | `<human / ai / human-or-ai>` | `<none / [ORG]HOAC-...>` | `<code>` | `<person's Cell, for an AI assistant>` | `<test ID and version (seat)>` | `<none / service and direction>` |
+| `<[ORG]POD-INITIALS>` | POD | `<from the organisation's list>` | — | `<none / [ORG]HOAC-...>` | `<code>` | — | `<test ID and version (seat)>` | — |
+
+```yaml
+cell:
+  unit_kind: "CELL"
+  code: "<[ORG]CELL-INITIALS>"
+  parent: "<code of this AIOC or of its Pod>"
+  type: "<from the organisation's list>"
+  filler_kind: "<human | ai | human-or-ai>"
+  hoac: "<[ORG]HOAC-GOV | [ORG]HOAC-TM | [ORG]HOAC-ACS>"   # omit if none
+  attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
+  fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
+```
+
+- A Pod holds Cells only; anything that needs nesting is an AIOC.
+- An external service, API or tool is a port on the card of the Cell that receives or sends, never a Cell; an external AI agent acting directly in the work is an AI Cell.
+
 ## Annex A. The four-part capability form (normative for every capability)
 
 ### A.1 Definition — must contain
@@ -357,4 +382,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.1.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v1.3.0 · Powered by 49GAION*
