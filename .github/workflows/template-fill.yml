@@ -1,0 +1,46 @@
+# Required check on main. Fills the YAML card blocks of template/AIOC-BLUEPRINT-TEMPLATE.md with
+# sample values and validates each against the unit card schema of the 49GAION Operating
+# Protocol, read at a fixed commit: the SHA in the file PROTOCOL-PIN at the repository root when
+# present, otherwise DEFAULT_PIN below (protocol main at the time of this check). A content
+# change that moves to a new protocol version moves the pin in the same change.
+# Ratchet: the same template at the base commit is validated against the same schema; a
+# finding it already has is a warning, a new finding fails. Once main is clean, every finding fails.
+name: template-fill
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  DEFAULT_PIN: 86bb13c7e58810ab252d2d8c0df631755461ceab
+jobs:
+  template-fill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml==6.0.2 jsonschema==4.23.0 referencing==0.35.1
+      - name: Fetch the protocol at the pinned commit
+        run: |
+          PIN=$DEFAULT_PIN
+          if [ -f PROTOCOL-PIN ]; then PIN=$(tr -d ' \n\r' < PROTOCOL-PIN); fi
+          if ! printf '%s' "$PIN" | grep -Eq '^[0-9a-f]{40}$'; then echo "::error::TEMPLATE-FILL-PIN: PROTOCOL-PIN must hold one full commit SHA"; exit 1; fi
+          echo "49GAION-protocol at $PIN"
+          git init -q .deps/protocol
+          git -C .deps/protocol fetch -q --depth 1 https://github.com/49g-holding/49GAION-protocol.git "$PIN"
+          git -C .deps/protocol checkout -q FETCH_HEAD
+      - name: Template at the base commit
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null && git cat-file -e "$BASE:template/AIOC-BLUEPRINT-TEMPLATE.md" 2>/dev/null; then
+            git show "$BASE:template/AIOC-BLUEPRINT-TEMPLATE.md" > "$RUNNER_TEMP/base-template.md"
+          fi
+      - name: Fill the template and validate it
+        run: python3 .github/scripts/check_template_fill.py template/AIOC-BLUEPRINT-TEMPLATE.md .deps/protocol/spec/schemas/unit-card.schema.json "$RUNNER_TEMP/base-template.md"
