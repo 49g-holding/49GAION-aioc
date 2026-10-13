@@ -2,7 +2,7 @@
 # ── Blueprint metadata (machine-readable; the panel generator and the back-office builder read this block) ──
 blueprint:
   aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL or TenAIOC-SL. Only cores carry a [ORG]AIOC code; it never changes when the AIOC moves.
-  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code
+  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code (label, v1.5.0: an example only; a top-level AIOC's parent is the Charter of its [ORG]AION)
   full_name: "<Full name>"                # e.g. Organization Core Office
   organisation: "<organisation>"          # e.g. Ten
   type: "<foundational | structural | specialised | connector | other>"   # why the AIOC exists; a card field, never part of the name
@@ -149,7 +149,7 @@ The design uses general terms; this table says what each term is in this organis
 
 | Term in the blueprint | In `<organisation>` |
 |---|---|
-| The Top Office (the only centre of decision) | |
+| The Top Office (the only centre of decision; label, v1.5.0: the Office of the root AIOC, the Charter; decisions are signed by human Cells carrying HOAC labels) | |
 | **`[ORG]AIOC-OCO`** (every `[ORG]HOAC-ACS` request about this unit's AIs goes to it) | |
 | The engineering division | |
 | The IT and infrastructure division | |
@@ -168,7 +168,7 @@ The design uses general terms; this table says what each term is in this organis
 
 ## 3. Positions
 
-Every unit has one accountable `[ORG]HOAC-ACS` seat, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
+Every unit has one accountable `[ORG]HOAC-ACS` seat (label, v1.5.0: every AIOC, Pod and Cell answers along `accountable_to` to the nearest HOAC above it; the ACS seat meant is that HOAC's), held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
 
 | Position (standard title) | Purpose | Reports to | Run today by | Deputy |
 |---|---|---|---|---|
@@ -313,7 +313,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
 | Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
-| Final authority (each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
+| Final authority (label, v1.5.0: the final authority is GOV; the seat accountable for OCO decides only on the objection path; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
 
 ---
 
@@ -356,6 +356,9 @@ cell:
   full_name: "<Full name>"
   parent: "<code of this AIOC or of its Pod>"
   accountable_to: "<code of the human Cell carrying a HOAC label that this Cell answers to>"
+  # hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # only on a Cell whose filler_kind is human; omit if none
+  # authority_scope: { decision_types: ["<listed type>"], expires: "<YYYY-MM-DD>", authority: "<constituted | delegated>" }   # every Cell carrying a HOAC label (Standard §4.4, item 8)
+  # attached_to: "<code of the person's Cell>"   # only for an attached AI Cell; omit otherwise
   type: "<from the organisation's list>"
   filler_kind: "<human | ai | human-or-ai>"
   card_version: "<vN.N.N>"
@@ -467,4 +470,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.3.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v1.5.0 · Powered by 49GAION*
