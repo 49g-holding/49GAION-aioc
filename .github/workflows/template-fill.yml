@@ -1,0 +1,25 @@
+# Required check on main once the template carries every schema-required key (v1.5.0).
+# Fills the YAML card blocks of template/AIOC-BLUEPRINT-TEMPLATE.md (§1 and §17) with sample
+# values and validates each against the unit card schema of the 49GAION Operating Protocol,
+# read at main or at the ref in the repository variable PROTOCOL_REF when set and still present.
+name: template-fill
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  template-fill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml==6.0.2 jsonschema==4.23.0
+      - name: Fetch the protocol
+        run: bash .github/scripts/fetch.sh 49GAION-protocol .deps/protocol "${{ vars.PROTOCOL_REF }}"
+      - name: Fill the template and validate it
+        run: python3 .github/scripts/check_template_fill.py template/AIOC-BLUEPRINT-TEMPLATE.md .deps/protocol/spec/schemas/unit-card.schema.json
