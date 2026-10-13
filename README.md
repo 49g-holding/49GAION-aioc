@@ -1,6 +1,6 @@
 # 49GAION · the AIOC
 
-**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.**
+**Version `v1.3.0` · proposed.**
 
 49GAION is an organisation design framework: a framework for building organisations from interchangeable AI and human parts. This repository holds what an AIOC (AI Operating Core) is, and the blueprint template every AIOC is filled from.
 
