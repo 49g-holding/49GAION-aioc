@@ -383,3 +383,4 @@ Every bot performing a role card has one identity card.
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
 *49GAION AIOC Blueprint Template v1.3.0 · Powered by 49GAION*
+
