@@ -1,10 +1,10 @@
 # The standard capabilities of every AIOC
 
-**Version `v1.1.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
+**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
 
 ## 4.1 Office
 
-**Definition.** When a position needs more than one Chief of Staff, of any kind and for any reason, those Chiefs of Staff together form an **Office**. Humans can work in an Office alongside them. An Office protects the accountable HOAC seat's attention: it receives, records, prepares and follows up, and never takes the HOAC seat's decisions.
+**Definition.** When a position needs more than one Chief of Staff, of any kind and for any reason, those Chiefs of Staff together form an **Office**: a Pod of Chief of Staff Cells (`CELLS-AND-PODS.md`). Humans can work in an Office alongside them. An Office protects the accountable HOAC seat's attention: it receives, records, prepares and follows up, and never takes the HOAC seat's decisions.
 - **Two forms:** a single Chief of Staff, where one is enough; or an **Office** of several Chiefs of Staff.
 - **Executive assistant:** a Chief of Staff of the assisting kind with exactly one function (for example records, follow-up, research). It writes only to its assigned part of the Office record and is named by its plain function ("records assistant").
 - **One record per Office.** Directives, tasks and decisions are kept in a single register.
@@ -18,7 +18,7 @@
 
 ## 4.2 Chief of Staff
 
-**Definition.** A **Chief of Staff** analyses the reports and performance of a group of agents and leads them at machine speed. There are different kinds of Chief of Staff:
+**Definition.** A **Chief of Staff** is a Cell (`CELLS-AND-PODS.md` §1). It analyses the reports and performance of a group of agents and leads them at machine speed. There are different kinds of Chief of Staff:
 - **managing agents**, which lead and coordinate other agents through control, planning or direction;
 - **connecting agents**, which connect humans with agents: they report to a human, assist them, and carry their requests to the agents.
 
