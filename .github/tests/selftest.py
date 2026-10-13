@@ -65,6 +65,9 @@ if (S / "check_template_fill.py").exists():
     expect("template-fill: with an empty known list an old finding fails",
            run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name"]), schema, str(empty)), "'full_name' is a required property")
 
+# ---------- person-names (fictional name; the real list is never used here) ----------
+expect("person-names: selftest cases", subprocess.run([sys.executable, str(pathlib.Path(__file__).resolve().parent / "person_names_selftest.py")], capture_output=True, text=True))
+
 bad = [n for n, ok in results if not ok]
 print(f"\nci-selftest: {len(results) - len(bad)}/{len(results)} cases as expected")
 if bad:
