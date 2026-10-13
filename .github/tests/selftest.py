@@ -35,7 +35,9 @@ for name, body, code in (("a valid escaped reference passes", "see Standard \\u0
 # template-fill (AIOC repository only)
 if (S / "check_template_fill.py").exists():
     schema = f"{DEPS}/protocol/spec/schemas/unit-card.schema.json"
-    fx = ROOT / ".github/tests/template-fill/complete.md"
+    import json
+    v15 = "accountable_to" in json.load(open(schema))["properties"]  # the fixture matching the schema fetched
+    fx = ROOT / f".github/tests/template-fill/complete-{'v1.5' if v15 else 'v1.4'}.md"
     expect("template-fill: a complete card block passes", run(ROOT, sys.executable, str(S / "check_template_fill.py"), str(fx), schema))
     for key in ("lifecycle_state", "full_name", "lineage"):
         t = pathlib.Path(tempfile.mkdtemp()) / "missing.md"
