@@ -18,7 +18,7 @@
 
 ## 4.2 Chief of Staff
 
-**Definition.** A **Chief of Staff** is a Cell (`CELLS-AND-PODS.md` §1). It analyses the reports and performance of a group of agents and leads them at machine speed. There are different kinds of Chief of Staff:
+**Definition.** A **Chief of Staff** is a Cell (`CELLS-AND-PODS.md`, Cell). It analyses the reports and performance of a group of agents and leads them at machine speed. There are different kinds of Chief of Staff:
 - **managing agents**, which lead and coordinate other agents through control, planning or direction;
 - **connecting agents**, which connect humans with agents: they report to a human, assist them, and carry their requests to the agents.
 
