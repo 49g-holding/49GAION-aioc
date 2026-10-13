@@ -54,6 +54,16 @@ if (S / "check_template_fill.py").exists():
            run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name"]), schema, base1))
     expect("template-fill: a new finding beside one on the base fails",
            run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name", "lineage"]), schema, base1), "'lineage' is a required property")
+    # Known list (as read from the base commit): listed findings are warnings, others fail; an empty list is strict.
+    kl = pathlib.Path(tempfile.mkdtemp()) / "base.known.tsv"
+    kl.write_text(run(ROOT, sys.executable, str(S / "check_template_fill.py"), "--list", drop(["full_name"]), schema).stdout)
+    expect("template-fill: a finding on the base's known list passes as a warning",
+           run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name"]), schema, str(kl)))
+    expect("template-fill: a finding not on the base's known list fails",
+           run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name", "lineage"]), schema, str(kl)), "'lineage' is a required property")
+    empty = pathlib.Path(tempfile.mkdtemp()) / "empty.known.tsv"; empty.write_text("# empty\n")
+    expect("template-fill: with an empty known list an old finding fails",
+           run(ROOT, sys.executable, str(S / "check_template_fill.py"), drop(["full_name"]), schema, str(empty)), "'full_name' is a required property")
 
 bad = [n for n, ok in results if not ok]
 print(f"\nci-selftest: {len(results) - len(bad)}/{len(results)} cases as expected")

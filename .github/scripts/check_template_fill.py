@@ -87,7 +87,13 @@ def main(tpl, schema_path, baseline=None):
     val = Draft202012Validator(schema, registry=reg)  # sibling schemas (for example the Port card) resolve locally
     known = set()
     if baseline and os.path.exists(baseline):
-        known = {(top, path, msg) for _, top, errs in errors(baseline, val) for path, msg in errs}
+        if baseline.endswith(".known.tsv"):
+            # The known-warning list as it stands on the base commit (never the pull request's copy).
+            for ln in open(baseline, encoding="utf-8").read().splitlines():
+                if ln.strip() and not ln.startswith("#"):
+                    top, path, msg = ln.split("\t", 2); known.add((top, path, msg))
+        else:
+            known = {(top, path, msg) for _, top, errs in errors(baseline, val) for path, msg in errs}
     res = errors(tpl, val)
     n, bad, old = 0, 0, 0
     for line, top, errs in res:
@@ -97,7 +103,7 @@ def main(tpl, schema_path, baseline=None):
             if (p, m) in new_errs:
                 print(f"::error::TEMPLATE-FILL {tpl}:{line} ({top}): {p}: {m}")
             else:
-                print(f"::warning::TEMPLATE-FILL-EXISTING {tpl}:{line} ({top}): {p}: {m} (already on the base)"); old += 1
+                print(f"::warning::TEMPLATE-FILL-KNOWN {tpl}:{line} ({top}): {p}: {m} (on the base commit's known list)"); old += 1
         bad += bool(new_errs)
         print(f"{tpl}:{line} {top}: {'FAIL' if new_errs else 'valid' if not errs else 'existing findings only'}")
     if n == 0:
@@ -107,4 +113,11 @@ def main(tpl, schema_path, baseline=None):
     print(f"template-fill: {n} filled blocks add no finding" + (f" ({old} existing on the base, reported as warnings)" if old else "; all validate"))
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "--list":
+        # Print the known-warning list for a template: block, path and message, one per line.
+        v = Draft202012Validator(json.load(open(sys.argv[3])), registry=Registry().with_resources(
+            [(q.name, Resource.from_contents(json.loads(q.read_text()))) for q in pathlib.Path(sys.argv[3]).parent.glob("*.schema.json")]))
+        for _, top, errs in errors(sys.argv[2], v):
+            for path, msg in errs: print(f"{top}\t{path}\t{msg}")
+        sys.exit(0)
     main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
