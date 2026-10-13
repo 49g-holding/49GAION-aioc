@@ -14,3 +14,10 @@ cell:
   lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"
   fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
 ```
+
+Superseded (fixture) by the block above; kept as written:
+
+```yaml
+cell:
+  unit_kind: "CELL"
+```

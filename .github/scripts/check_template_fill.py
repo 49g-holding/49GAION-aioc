@@ -5,7 +5,7 @@ schema of the 49GAION Operating Protocol (spec/schemas/unit-card.schema.json).
 
 A placeholder "<a | b | c>" takes its first option; other placeholders take a sample value by
 key (fictional codes such as TenAIOC-SL and TenCELL-TMS). Every block whose top key is card,
-aioc, pod or cell is checked. A block that fails names the schema error (TEMPLATE-FILL).
+aioc, pod or cell is checked, except a block whose preceding line starts with "Superseded". A block that fails names the schema error (TEMPLATE-FILL).
 Usage: check_template_fill.py <template.md> <unit-card.schema.json>"""
 import json, re, sys
 import yaml
@@ -48,6 +48,9 @@ def fill(o, kind, key=None):
 
 def blocks(md):
     for m in re.finditer(r"```yaml\n(.*?)```", md, re.S):
+        before = md[:m.start()].rstrip().splitlines()[-1:] or [""]
+        if before[0].lstrip("> ").startswith("Superseded"):
+            continue  # a block kept as written under a superseded label is read, never filled
         try:
             doc = yaml.safe_load(m.group(1))
         except yaml.YAMLError as e:
