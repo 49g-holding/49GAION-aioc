@@ -80,7 +80,6 @@ The card declares what this AIOC receives, what it delivers, and in what format.
 card:
   unit_kind: "AIOC"
   code: "<code>"
-  parent: "<code of the holding unit, or none>"
   inner_units: ["<code>"]                 # by link; empty if none
   type: "<foundational | structural | specialised | connector | other>"   # required; if other, add type_description
   org_aion: "<[ORG]AION>"
