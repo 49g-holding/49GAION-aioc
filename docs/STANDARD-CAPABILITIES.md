@@ -1,6 +1,6 @@
 # The standard capabilities of every AIOC
 
-**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
+**Version `v1.5.0` · proposed.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
 
 ## 4.1 Office
 
@@ -61,6 +61,7 @@ A new input type is one new converter, added as a tested change. Outside tools a
 **Definition.** The AIOC's operating face and the only surface humans use, built only from the AIOC's blueprint. It shows, drafts, routes and records; it is not a second centre of decision.
 - **Inside it:** tools; access (secrets only in a vault, never readable); the authority switch, mirroring the role cards; evidence of every action (who, what, when, before, after, the way back, the read-back); test scores; the Input socket view; the Health section; the HU ports, including the stop door.
 - **Always:** the member's own live sign-in; caps on outside and model calls; outside text treated as data; rollback for every release.
+- **The only surface, with two exceptions (v1.5.0):** except the stop door and the accountability path, which the Panel only links to (Standard §6.1, item 6). Those are served at the tool gateway through a sign-in that no AI built, hosts or can change.
 - The Panel is built, customised and maintained by `[ORG]AIOC-OCO`; any AIOC request about the Panel goes to OCO (Standard §5.3).
 
 **Process.** A change is a tested change to the blueprint, reviewed by someone other than the writer; the Panel and Back office are rebuilt from it; the running Panel shows the version it was built from.

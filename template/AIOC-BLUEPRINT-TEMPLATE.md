@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v1.3.0"
+    version: "v1.5.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v1.3.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v1.5.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
 >
@@ -74,6 +74,8 @@ blueprint:
 
 ## 1. Card (49GAION Operating Protocol §4)
 
+> **Correction (v1.5.0).** "Protocol §4" in this heading reads "Protocol §3" (the card); §4 is the Work Item. The heading is kept as written.
+
 The card declares what this AIOC receives, what it delivers, and in what format. It is the only card for this AIOC; the protocol AIOC's map reads it from here. It follows `spec/schemas/unit-card.schema.json` in `49g-holding/49GAION-protocol`.
 
 ```yaml
@@ -104,9 +106,39 @@ card:
     connectors:
       - { role: "<tool role, e.g. task tracking>", connector: "<connector id>", access_managed_in: "panel" }
     gateway: { metering_id: "<per-AIOC metering id on the shared AI gateway>" }
+  # Added in v1.5.0: every key the unit card schema requires (spec/schemas/unit-card.schema.json).
+  full_name: "<Full name>"
+  version: "<N.N.N>"
+  lineage: { id: "<code it derives from>", version: "<N.N.N>", relation: "<original | derived | merged | split>" }
+  lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"   # read: lifecycle_state before joined
+  blueprint_version: "<vN.N.N>"
+  template_version: "<vN.N.N>"
+  accountable_to: "<code of the human Cell carrying a HOAC label that this AIOC answers to>"   # Standard §1.7, item 12
+  top_cell: "<code of exactly one Cell whose parent is this AIOC>"                            # Standard §1.7, item 11
+  hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # omit if none; with it, label_holder or decision_rule
+  label_holder: "<code of the human Cell, inside this AIOC, that holds the label>"
+  fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the human Cell that owns the test>" }
+  skills:
+    - { id: "<skill-id>", name: "<skill name>", tags: ["<tag>"] }
+  ports:                                  # one input and one output of each kind, plus exactly one stop door (Standard §6.1)
+    - { unit: "<code>", port: "ai-in", direction: "input", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "ai-out", direction: "output", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "hu-in", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "hu-out", direction: "output", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "stop", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["stop"], authority_limit: "stop only", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit", stop_door: true }
+  configuration:                          # §15; every slot filled, each with who set it, when and in which version
+    office_accountable_human: { value: "<HOAC seat accountable for OCO>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    central_head: { value: "<OCO of this [ORG]AION>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    discussion_limits: { value: "<limits>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    waiting_deadlines: { value: "<per status>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    bounce_limit: { value: "<number>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    chain_depth: { value: "<number>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    halt_request_priority: { value: "immediate", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    budget_cap: { value: "<amount per period>", set_by: "<seat>", date: "<date>", version: "<vN>" }
+    unattended_action: "<read-record-triage | act-within-limits>"
 ```
 
-**Joining the protocol.** This AIOC joins the 49GAION Operating Protocol only after every input and output claimed on this card passes fixed samples. A claim that fails is removed from the card. Until then the card is marked `joined: false` and no Work Item is routed to it.
+**Joining the protocol.** This AIOC joins the 49GAION Operating Protocol only after every input and output claimed on this card passes fixed samples. A claim that fails is removed from the card. Until then the card is marked `joined: false` (read: lifecycle_state before joined) and no Work Item is routed to it.
 
 ---
 
@@ -221,7 +253,7 @@ One block per function the AIOC performs. Use the **four-part capability form** 
 |---|---|---|
 | | | |
 
-All model calls go through the **shared AI gateway** at the 49GAION level (keys, cost and logs in one place).
+All model calls go through the **shared AI gateway** at the 49GAION level (keys, cost and logs in one place). Correction (v1.5.0): the gateway is the tool gateway in the `[ORG]AION`; 49GAION runs no gateway for an `[ORG]AION` (Standard §4.4, item 11).
 
 **Connectors and metering.** Each tool is reached through a **swappable connector**, recorded by tool **role**; access is granted and withdrawn in the Panel. This AIOC's AI usage and cost are **metered separately** on the shared AI gateway; its **budget cap** is set in §15. A new tool enters only by a sourced proposal, a side-by-side test against the current tool and an update of the part's card.
 
@@ -280,6 +312,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Halt-request priority | | immediate | | | | |
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
+| Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
 | Final authority (each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
 
 ---
@@ -300,6 +333,8 @@ The parts inside this AIOC (`docs/CELLS-AND-PODS.md`). One card per Cell and per
 | `<[ORG]CELL-INITIALS>` | CELL | `<from the organisation's list>` | `<human / ai / human-or-ai>` | `<none / [ORG]HOAC-...>` | `<code>` | `<person's Cell, for an AI assistant>` | `<test ID and version (seat)>` | `<none / service and direction>` |
 | `<[ORG]POD-INITIALS>` | POD | `<from the organisation's list>` | — | `<none / [ORG]HOAC-...>` | `<code>` | — | `<test ID and version (seat)>` | — |
 
+Superseded (v1.5.0) by the complete form below; kept as written:
+
 ```yaml
 cell:
   unit_kind: "CELL"
@@ -310,6 +345,56 @@ cell:
   hoac: "<[ORG]HOAC-GOV | [ORG]HOAC-TM | [ORG]HOAC-ACS>"   # omit if none
   attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
   fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
+```
+
+**Complete card forms (v1.5.0).** The block above is kept as written; the blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names its person's Cell in `attached_to`.
+
+```yaml
+cell:
+  unit_kind: "CELL"
+  code: "<[ORG]CELL-INITIALS>"
+  full_name: "<Full name>"
+  parent: "<code of this AIOC or of its Pod>"
+  accountable_to: "<code of the human Cell carrying a HOAC label that this Cell answers to>"
+  type: "<from the organisation's list>"
+  filler_kind: "<human | ai | human-or-ai>"
+  card_version: "<vN.N.N>"
+  version: "<N.N.N>"
+  lineage: { id: "<code it derives from>", version: "<N.N.N>", relation: "<original | derived | merged | split>" }
+  lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"
+  fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the human Cell that owns the test>" }
+  ports:                                  # one input and one output of each kind, plus exactly one stop door (Standard §6.1)
+    - { unit: "<code>", port: "ai-in", direction: "input", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "ai-out", direction: "output", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "hu-in", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "hu-out", direction: "output", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<code>", port: "stop", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["stop"], authority_limit: "stop only", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit", stop_door: true }
+```
+
+A Pod example (a Pod holds Cells only; a Pod with a HOAC label names its `label_holder`, or a `decision_rule` when it decides together):
+
+```yaml
+pod:
+  unit_kind: "POD"
+  code: "<[ORG]POD-INITIALS>"
+  full_name: "<Full name>"
+  parent: "<code of this AIOC>"
+  accountable_to: "<code of the human Cell carrying a HOAC label that this Pod answers to>"
+  type: "<from the organisation's list>"
+  inner_units: ["<[ORG]CELL-INITIALS>"]
+  hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # omit if none
+  label_holder: "<code of the human Cell, in this Pod, that holds the label>"
+  card_version: "<vN.N.N>"
+  version: "<N.N.N>"
+  lineage: { id: "<code it derives from>", version: "<N.N.N>", relation: "<original | derived | merged | split>" }
+  lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"
+  fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the human Cell that owns the test>" }
+  ports:                                  # one input and one output of each kind, plus exactly one stop door (Standard §6.1)
+    - { unit: "<[ORG]POD-INITIALS>", port: "ai-in", direction: "input", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<[ORG]POD-INITIALS>", port: "ai-out", direction: "output", type: "AI", identification: "technical-key", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<[ORG]POD-INITIALS>", port: "hu-in", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<[ORG]POD-INITIALS>", port: "hu-out", direction: "output", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["<content>"], authority_limit: "<limit>", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit" }
+    - { unit: "<[ORG]POD-INITIALS>", port: "stop", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["stop"], authority_limit: "stop only", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit", stop_door: true }
 ```
 
 - A Pod holds Cells only; anything that needs nesting is an AIOC.
