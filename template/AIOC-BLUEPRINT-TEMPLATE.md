@@ -356,6 +356,9 @@ cell:
   full_name: "<Full name>"
   parent: "<code of this AIOC or of its Pod>"
   accountable_to: "<code of the human Cell carrying a HOAC label that this Cell answers to>"
+  # hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # only on a Cell whose filler_kind is human; omit if none
+  # authority_scope: { decision_types: ["<listed type>"], expires: "<YYYY-MM-DD>", authority: "<constituted | delegated>" }   # every Cell carrying a HOAC label (Standard §4.4, item 8)
+  # attached_to: "<code of the person's Cell>"   # only for an attached AI Cell; omit otherwise
   type: "<from the organisation's list>"
   filler_kind: "<human | ai | human-or-ai>"
   card_version: "<vN.N.N>"
@@ -467,4 +470,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.3.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v1.5.0 · Powered by 49GAION*

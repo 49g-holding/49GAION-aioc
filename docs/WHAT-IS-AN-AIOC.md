@@ -48,7 +48,7 @@ The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: ever
 2. The seat's requests go to OCO. Where they disagree, OCO does not decide: the seat may hold the objection open until it reaches the HOAC seat accountable for OCO, which decides (Standard §4.2, item 7).
 3. A change to an AI's authority (capacity, skills, bots, access, budget) is decided by the `[ORG]HOAC-ACS` seat; OCO prepares, checks and carries it out.
 4. **Two relations (v1.5.0).** An AIOC's card names its `parent` (the AIOC whose Blueprint lists it, or none for the Charter) and its `accountable_to` (the human Cell carrying a HOAC label to which it answers); every rule on accountability follows `accountable_to` (Standard §1.7). Its `top_cell` gives its lead; its Type gives why it exists.
-5. **Human-led AIOC (v1.5.0).** An AIOC whose top Cell is human may set its Chief of Staff Cell to human-or-ai. Whatever the filler, a Chief of Staff never signs for its person. The Charter and any AIOC carrying a GOV or TM label are installed and changed on GOV or TM signature, never by OCO alone (Standard §5.1).
+5. **Human-led AIOC (v1.5.0).** An AIOC whose top Cell is human may set its Chief of Staff Cell to human-or-ai. Whatever the filler, a Chief of Staff never signs for its person. The Charter is installed and changed only on GOV's signature; any other AIOC carrying a GOV or TM label, on GOV or TM signature; neither by OCO alone (Standard §1.7 and §5.1).
 
 ## 6. Runtime
 
