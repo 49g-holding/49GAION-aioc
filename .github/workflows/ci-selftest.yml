@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pyyaml==6.0.2 jsonschema==4.23.0
+      - run: pip install pyyaml==6.0.2 jsonschema==4.23.0 referencing==0.35.1
       - name: Fetch companion repositories
         run: |
           bash .github/scripts/fetch.sh 49GAION .deps/hub "${{ vars.HUB_REF }}"

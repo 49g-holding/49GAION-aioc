@@ -9,7 +9,9 @@ aioc, pod or cell is checked, except a block whose preceding line starts with "S
 Usage: check_template_fill.py <template.md> <unit-card.schema.json>"""
 import json, re, sys
 import yaml
+import pathlib
 from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
 
 SAMPLE = {
     "code": {"AIOC": "TenAIOC-SL", "POD": "TenPOD-RV", "CELL": "TenCELL-SLCS"},
@@ -63,7 +65,10 @@ def blocks(md):
 
 def main(tpl, schema_path):
     schema = json.load(open(schema_path, encoding="utf-8"))
-    val = Draft202012Validator(schema)
+    sib = {p.name: json.loads(p.read_text(encoding="utf-8")) for p in pathlib.Path(schema_path).parent.glob("*.schema.json")}
+    reg = Registry().with_resources([(n, Resource.from_contents(x)) for n, x in sib.items()] +
+                                    [(x["$id"], Resource.from_contents(x)) for x in sib.values() if "$id" in x])
+    val = Draft202012Validator(schema, registry=reg)  # sibling schemas (for example the Port card) resolve locally
     md = open(tpl, encoding="utf-8").read()
     n, bad = 0, 0
     for line, top, doc in blocks(md):
