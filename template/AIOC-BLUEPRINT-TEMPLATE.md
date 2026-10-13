@@ -168,7 +168,7 @@ The design uses general terms; this table says what each term is in this organis
 
 ## 3. Positions
 
-Every unit has one accountable `[ORG]HOAC-ACS` seat, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
+Every unit has one accountable `[ORG]HOAC-ACS` seat (label, v1.5.0: every AIOC, Pod and Cell answers along `accountable_to` to the nearest HOAC above it; the ACS seat meant is that HOAC's), held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
 
 | Position (standard title) | Purpose | Reports to | Run today by | Deputy |
 |---|---|---|---|---|
@@ -313,7 +313,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
 | Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
-| Final authority (label, v1.5.0: a human seat carrying a HOAC label, never an AI; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
+| Final authority (label, v1.5.0: the final authority is GOV; the seat accountable for OCO decides only on the objection path; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
 
 ---
 
