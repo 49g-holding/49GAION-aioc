@@ -1,6 +1,6 @@
 # Cells and Pods
 
-**Version `v1.5.0` · proposed.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
+**Version `v1.5.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
 
 The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside an AIOC, its Blueprint holds two kinds of part: Cells and Pods.
 

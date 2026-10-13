@@ -1,0 +1,15 @@
+# Known template-fill warnings on main, against protocol 86bb13c. Read from the base commit only.
+card	(card)	'full_name' is a required property
+card	(card)	'version' is a required property
+card	(card)	'lineage' is a required property
+card	(card)	'lifecycle_state' is a required property
+card	(card)	'blueprint_version' is a required property
+card	(card)	'template_version' is a required property
+card	(card)	'skills' is a required property
+card	(card)	'configuration' is a required property
+cell	(card)	'full_name' is a required property
+cell	(card)	'card_version' is a required property
+cell	(card)	'version' is a required property
+cell	(card)	'lineage' is a required property
+cell	(card)	'lifecycle_state' is a required property
+cell	filler_kind	'ai' was expected
