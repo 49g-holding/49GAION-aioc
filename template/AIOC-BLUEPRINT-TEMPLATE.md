@@ -2,7 +2,7 @@
 # ── Blueprint metadata (machine-readable; the panel generator and the back-office builder read this block) ──
 blueprint:
   aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL or TenAIOC-SL. Only cores carry a [ORG]AIOC code; it never changes when the AIOC moves.
-  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code
+  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code (label, v1.5.0: an example only; a top-level AIOC's parent is the Charter of its [ORG]AION)
   full_name: "<Full name>"                # e.g. Organization Core Office
   organisation: "<organisation>"          # e.g. Ten
   type: "<foundational | structural | specialised | connector | other>"   # why the AIOC exists; a card field, never part of the name
@@ -149,7 +149,7 @@ The design uses general terms; this table says what each term is in this organis
 
 | Term in the blueprint | In `<organisation>` |
 |---|---|
-| The Top Office (the only centre of decision) | |
+| The Top Office (the only centre of decision; label, v1.5.0: the Office of the root AIOC, the Charter; decisions are signed by human Cells carrying HOAC labels) | |
 | **`[ORG]AIOC-OCO`** (every `[ORG]HOAC-ACS` request about this unit's AIs goes to it) | |
 | The engineering division | |
 | The IT and infrastructure division | |
@@ -313,7 +313,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
 | Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
-| Final authority (each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
+| Final authority (label, v1.5.0: a human seat carrying a HOAC label, never an AI; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
 
 ---
 

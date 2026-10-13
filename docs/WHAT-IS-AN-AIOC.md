@@ -4,7 +4,7 @@
 
 ## 1. Definition
 
-An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION`. The AIOC is the only unit kind. Inside it, its Blueprint holds Cells and Pods (`CELLS-AND-PODS.md`). HOAC (Human Oversight & Accountability Control) is a label of human accountability that sits on a Cell, a Pod or the whole AIOC. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
+An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION`. The AIOC is the only unit kind (reading, v1.5.0: "unit" here means a part with its own Blueprint; Pods and Cells are parts with cards inside it). Inside it, its Blueprint holds Cells and Pods (`CELLS-AND-PODS.md`). HOAC (Human Oversight & Accountability Control) is a label of human accountability that sits on a Cell, a Pod or the whole AIOC. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
 
 49GAION is an organisation design framework: a framework for building organisations from interchangeable AI and human parts.
 
@@ -74,7 +74,7 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 
 1. An AIOC may hold other AIOCs, to any depth, and holds its own Pods and Cells; an AIOC may itself sit inside an AIOC (Standard §1.7). A HOAC label may sit on any of them.
 2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door for AI work to its inner units; the HU ports and stop doors of inner units never pass through it.
-3. Every inner unit has its own card and blueprint, listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
+3. Every inner unit has its own card and blueprint (label, v1.5.0: an inner AIOC has a card and a blueprint; a Pod or a Cell has a card in its AIOC's Blueprint), listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
 4. Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
 
 ## 11. Working with other units
