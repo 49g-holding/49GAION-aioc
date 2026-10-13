@@ -1,6 +1,6 @@
 # Cells and Pods
 
-**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
+**Version `v1.5.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
 
 The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside an AIOC, its Blueprint holds two kinds of part: Cells and Pods.
 
@@ -14,6 +14,9 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 6. **A person's AI assistants.** The AI assistants of a person are separate registered AI Cells, each with its own code, attached to that person's Cell (`attached_to` on the card). They are never unnamed.
 7. **Fixed test.** Every Cell has a fixed test, owned by its seat. A filler gains access only after passing it; work moves from human to AI, or from one version to the next, only by passing it, and moves back if the score drops.
 8. **HOAC label.** A Cell may carry a HOAC (Human Oversight & Accountability Control) label, `[ORG]HOAC-GOV`, `[ORG]HOAC-TM` or `[ORG]HOAC-ACS`, as a field of its card. A human seat that carries the label is accountable for the part it sits on and everything under it.
+9. **Attached Cells (v1.5.0).** An attached AI Cell sits in the same Blueprint as the Cell it serves, has the same parent as that Cell and names its person's Cell in `attached_to`. It serves that seat only. When the filler changes, its memory of the previous filler is sealed. Whatever its filler, an attached Cell, including a Chief of Staff, never signs for its person (Protocol §4.10).
+10. **Two relations (v1.5.0).** `parent` names only the AIOC or Pod whose Blueprint holds the Cell's card; `accountable_to` names the human Cell carrying a HOAC label to which the Cell answers. A Cell is never a parent; nothing sits inside a Cell (Standard §1.7).
+11. **A label on a human seat (v1.5.0).** A HOAC label sits only on a Cell whose filler kind is human. If that seat is empty or filled by an AI, the label's powers are held (Standard §4.1).
 
 ## 2. Pod
 
@@ -22,10 +25,13 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 3. **No pooled access.** Within a Pod, access does not pool: each Cell holds only its own.
 4. **Stop.** Stopping a Pod stops every Cell in it. Its stop door is outside it.
 5. **HOAC label.** A Pod may carry a HOAC label, as a field of its card.
+6. **Label holder or decision rule (v1.5.0).** A Pod with a HOAC label names its `label_holder`, one human Cell in it, or, when it decides together, a `decision_rule`: member Cells, quorum, majority, chair and casting vote. Each member signs under their own Cell; one person holding two seats in the same body counts once (Standard §4.1).
 
 ## 3. Nature and role
 
 The role and nature of a Pod or an AIOC are read from the type of its top Cell. There is no rule that every AIOC must contain a given kind of Cell or Pod.
+
+**Top Cell (v1.5.0).** The card's `top_cell` names exactly one Cell whose parent is that part. Co-leadership is a Pod with a decision rule. The top Cell gives the part's lead; the AIOC Type gives why it exists (Standard §1.7).
 
 ## 4. External attachments
 
@@ -34,6 +40,7 @@ The role and nature of a Pod or an AIOC are read from the type of its top Cell. 
 3. **Through the gateway.** External ports pass only through the tool gateway. Stopping or retiring the owning Cell cuts the external connection automatically.
 4. **Register events.** The unit register records `connected` and `disconnected` events for each external port.
 5. **External AI agents.** An external AI agent that acts directly in the organisation's work is registered as an AI Cell. The organisation grants its access and holds its stop door.
+6. **Connecting a port (v1.5.0).** Connecting a port is the listed decision type `connect-external-port`. Anything that acts autonomously with the organisation's credentials is an external AI agent. No external agent or outside person signs; what arrives from them is data (Standard §4.4).
 
 ## 5. Codes
 

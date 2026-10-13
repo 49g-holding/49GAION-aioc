@@ -1,10 +1,10 @@
 # What an AIOC is
 
-**Version `v1.3.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
+**Version `v1.5.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
 
 ## 1. Definition
 
-An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION`. The AIOC is the only unit kind. Inside it, its Blueprint holds Cells and Pods (`CELLS-AND-PODS.md`). HOAC (Human Oversight & Accountability Control) is a label of human accountability that sits on a Cell, a Pod or the whole AIOC. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
+An **AIOC** (AI Operating Core) is an AI unit of one organisation, coded `[ORG]AIOC-[INITIALS]`. It belongs to that organisation's `[ORG]AION`. The AIOC is the only unit kind (reading, v1.5.0: "unit" here means a part with its own Blueprint; Pods and Cells are parts with cards inside it). Inside it, its Blueprint holds Cells and Pods (`CELLS-AND-PODS.md`). HOAC (Human Oversight & Accountability Control) is a label of human accountability that sits on a Cell, a Pod or the whole AIOC. AI does the work; the AIOC's `[ORG]HOAC-ACS` seat oversees it.
 
 49GAION is an organisation design framework: a framework for building organisations from interchangeable AI and human parts.
 
@@ -47,6 +47,8 @@ The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: ever
 1. Where an AIOC has an `[ORG]HOAC-ACS` seat, that seat is accountable for its results. It oversees, receives reports, may request anything for the unit, and never builds or changes the AIs directly (Standard §4.2, item 6).
 2. The seat's requests go to OCO. Where they disagree, OCO does not decide: the seat may hold the objection open until it reaches the HOAC seat accountable for OCO, which decides (Standard §4.2, item 7).
 3. A change to an AI's authority (capacity, skills, bots, access, budget) is decided by the `[ORG]HOAC-ACS` seat; OCO prepares, checks and carries it out.
+4. **Two relations (v1.5.0).** An AIOC's card names its `parent` (the AIOC whose Blueprint lists it, or none for the Charter) and its `accountable_to` (the human Cell carrying a HOAC label to which it answers); every rule on accountability follows `accountable_to` (Standard §1.7). Its `top_cell` gives its lead; its Type gives why it exists.
+5. **Human-led AIOC (v1.5.0).** An AIOC whose top Cell is human may set its Chief of Staff Cell to human-or-ai. Whatever the filler, a Chief of Staff never signs for its person. The Charter is installed and changed only on GOV's signature; any other AIOC carrying a GOV or TM label, on GOV or TM signature; neither by OCO alone (Standard §1.7 and §5.1).
 
 ## 6. Runtime
 
@@ -72,7 +74,7 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 
 1. An AIOC may hold other AIOCs, to any depth, and holds its own Pods and Cells; an AIOC may itself sit inside an AIOC (Standard §1.7). A HOAC label may sit on any of them.
 2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door for AI work to its inner units; the HU ports and stop doors of inner units never pass through it.
-3. Every inner unit has its own card and blueprint, listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
+3. Every inner unit has its own card and blueprint (label, v1.5.0: an inner AIOC has a card and a blueprint; a Pod or a Cell has a card in its AIOC's Blueprint), listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
 4. Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
 
 ## 11. Working with other units
