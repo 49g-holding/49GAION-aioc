@@ -261,6 +261,18 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 |---|---|---|---|
 | | | Panel | |
 
+**Mechanism register (GOV, 14 October 2026).** Every mechanism this AIOC uses, one row each. A row is never deleted, and every change that builds a mechanism cites its row (Standard §3.2).
+
+| ID | Mechanism | What it does | Where it lives | Today | Target |
+|---|---|---|---|---|---|
+| | | | | `<in force / live / paused / decided, not built>` | `<keep / build / improve / replace / withdrawn>` |
+
+**Reserve (GOV, 14 October 2026).** Ideas not adopted, with the reason and a reconsider-when trigger (Standard §2.1).
+
+| ID | Idea | Why held | Reconsider when |
+|---|---|---|---|
+| | | | |
+
 ## 9. Fixed tests: index, triggers and scores
 | Capability | Test ID and version | Evidence level | Last run | Result |
 |---|---|---|---|---|
@@ -272,6 +284,14 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 - **Re-run triggers:** any change to a model, instructions, this AIOC's card, this blueprint or the 49GAION Operating Protocol re-runs the affected tests automatically; also any change to tools or access, an Input socket converter or the AIOC's standard format, or any shared panel part.
 - **Evidence levels:** `MEASURED_IN_BUILD_ENVIRONMENT` ranks above `OWNER_ATTESTED`; only a measured score counts toward widening authority (the owner requests with the score attached; the `[ORG]HOAC-ACS` seat decides and OCO prepares, checks and carries out).
 - **Complete** only when every capability's test has a visible result.
+
+**Checks that are not fixed tests (GOV, 14 October 2026).** Each such check declares how it is placed and when it may block (Standard §3.2). A fixed test and a Human Floor negative test never appear in this table.
+
+| Check | Placement (in the producer's loop / on the verdict record / router / after completion) | Budget per item | Degradation order | Blocks only for |
+|---|---|---|---|---|
+| | | | | |
+
+- **Discriminating evidence.** A passing check counts only if it has been shown able to fail on the case it guards, and evidence is written by the runner, never by the worker.
 
 ## 10. Build: what is generated from this file
 | Built thing | Generated from | Recorded where |
@@ -314,6 +334,27 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
 | Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
 | Final authority (label, v1.5.0: the final authority is GOV; the seat accountable for OCO decides only on the objection path; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
+
+**Configuration added (GOV, 14 October 2026).** Each value records who set it, when, and in which version. Where 49GAION offers a default, the slot may keep it.
+
+| Slot | Value | Default offered by 49GAION | Set by | Date | Version | Replaces |
+|---|---|---|---|---|---|---|
+| Sensitivity classes of this AIOC's work and the default filler kind of each (Standard §1.5) | | none: must be set | | | | |
+| Move and return thresholds per Cell, and their window | | none: must be set | | | | |
+| Delegation ladder of each Chief of Staff (decides alone / decides and reports / only prepares / never), per class of act | | only prepares, for every class | | | | |
+| Move-on catalogue and stub age cap | | stub, default, mock, next item; 5 working days | | | | |
+| Stuck-item thresholds per status, and the repair menu | | none: must be set | | | | |
+| Loop breaker (runs of one Cell on one item, per window) | | 3 runs in 2 hours | | | | |
+| Dispute exit: rounds before the exit, and the classes that go to the human | | 2 rounds; none: classes must be set | | | | |
+| Stale work: finish window, drop age, cap on work in flight | | none: must be set | | | | |
+| Planned halt: grace time and resume order | | 10 minutes; order must be set | | | | |
+| Signature referral time for personal signatures | | 15 minutes | | | | |
+| Seat load weights and the load line; days before a critical seat is raised again | | 2 for a seat answering for a unit, 1 for a signing or on-call seat, 0.5 otherwise; line 4; 7 days | | | | |
+| Spend: soft-hold fraction, protected classes of work, degradation order | | 80%; none: classes must be set | | | | |
+| Capability tiers, tier floor per sensitivity class, engine re-score schedule | | none: must be set | | | | |
+| Cadence of each unattended AI Cell | | none: must be set | | | | |
+| Duty deputy: ruling life and weekly sample size | | 90 days; 10 | | | | |
+| Quiet windows: share of lower-stakes decisions | | none: must be set | | | | |
 
 ---
 

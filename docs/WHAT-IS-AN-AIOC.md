@@ -54,6 +54,17 @@ The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: ever
 
 Every AIOC has its own runtime, woken from its queue.
 
+**Addition (GOV, 14 October 2026).**
+1. **Runtime contract.** One versioned runner performs the common duties of every AI Cell in a clean workspace per run, and each Cell pins its runner version.
+2. **Wake and cadence.** A woken Cell checks for work with no model call. An unattended Cell is flagged when its newest output is older than twice its cadence.
+3. **Halt, pause and cut-off.** The AIOC can be halted by plan (running, draining, paused, resuming), with hand-offs and a declared resume order. Human seats may flag or hold its work. A stop of AI authority fences credentials already issued, and every executed action has a recovery path (Standard §4.3).
+4. **Self-healing and outside inspection.**
+   - Detectors with no model find stuck, silent or failing work.
+   - A repair stays inside the repairer's authority and is never a listed type.
+   - Every watcher reports its pulse, and unknown is never a pass.
+   - An outside inspector, sharing no failure with the AIOC, checks that its duties happened (Standard §3.2).
+5. **Spend.** Spend is kept as separate numbers. A soft hold applies before the cap, and a Cell past its cap pauses alone. The capability declares the order in which it sheds work (Standard §5.1).
+
 ## 7. Ports and stop
 
 Every AIOC has one input and one output of each kind (AI and HU), each with a Port card, plus the stop door: a mandatory, queue-less stop port of type HU, enforced outside the unit (Standard §6.1, §4.3). Stopping an AIOC stops every unit inside it; a human port never passes through an AI unit. An `[ORG]AION` is handed over only when the stop ports of all its units, its `[ORG]HOAC-GOV` and its Human Floor are in place (Standard §1.4).
@@ -63,6 +74,8 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 1. Every AIOC blueprint is an entry in the 49GAION Library: built once, configured per `[ORG]AION`, never rebuilt. During the design of an `[ORG]AION`, the blueprint of any capability not already in the 49GAION Library is added back to it, generalised and tested.
 2. Each AIOC card records its lineage: which AIOCs and versions it came from.
 3. Self-Improvement may propose merging overlapping AIOCs or splitting an AIOC that has grown too broad. In an `[ORG]AION` the proposal is decided by `[ORG]HOAC-TM` and carried out through OCO; in 49GAION it is decided by the governing seat (GOV) of 49GAION (Standard §2). No AIOC is deleted, only replaced, and no fixed test is lost.
+4. **The mechanism register and the Reserve (GOV, 14 October 2026).** Every AIOC keeps, in its blueprint, one register of its mechanisms: what each does, where it lives, its state today and its target. It never deletes a row, and every change that builds a row cites it. Ideas not adopted go to the Reserve, with their reason and a reconsider-when trigger (Standard §2.1, §3.2).
+5. **Fresh instance and duty carriage (GOV, 14 October 2026).** On every change, a fresh instance is built from the blueprint alone and run against the fixed tests. Every duty a role card gives is traced to a process step, an event or a setting.
 
 ## 9. Blueprints and versions
 
@@ -80,3 +93,11 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 ## 11. Working with other units
 
 AIOCs exchange work only through the 49GAION Operating Protocol: a card per AIOC, one Work Item per hand-off, ports (one input and one output of each kind, AI and HU, plus the stop door), an input check on arrival, links to sources instead of copies.
+
+**Addition (GOV, 14 October 2026).** Inside and between AIOCs:
+- **Records.** Records live in one home as events; registers and numbers are projections; every surface is a portal.
+- **Coordination log.** Parts that share records keep a coordination log of typed acts.
+- **Move-on.** A waiting item takes a move-on, recorded as a debt.
+- **Verdict records.** Verifications are records bound to the exact version, written by a non-author.
+- **Decision requests.** A matter for a human arrives as a decision request.
+
