@@ -30,7 +30,7 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
     - It has a switch, a floor, a fallback, a budget and a degradation order.
 14. **Engine binding (GOV, 14 October 2026).**
     - An AI Cell's engine and model are a versioned binding on its card (`engine_binding`), kept apart from its role and memory, and switched at the next run.
-    - A change within the signed tier re-runs the fixed test. A change of tier, or below the floor, is `change-filler` (Standard §5.1).
+    - A change within the signed tier re-runs the fixed test. A change of tier, or below the floor, is `change-filler` (Standard §4.4, items 6 to 11).
     - An unattended AI Cell declares its `cadence`.
 
 ## 2. Pod

@@ -60,7 +60,7 @@ Each unit has one input and one output of each kind (AI and HU), plus the stop d
   - the Chief of Staff's dissent;
   - what the waiting party does meanwhile.
 
-  The seat answers yes, veto, or change this part. A veto closes the subject: the Chief of Staff raises it again only if the seat or its deputy reopens it, and brings new facts only as facts. It dissents once, then carries out the decision as its own.
+  The seat answers yes, veto, or change this part. A veto closes the subject: the Chief of Staff raises it again only if the seat or its acting filler (Standard §4.1, item 12) reopens it, and brings new facts only as facts. It dissents once, then carries out the decision as its own.
 - **Recommend or not.** The Chief of Staff recommends on routine decisions. For a decision of a listed type, or of the highest sensitivity class, it follows the assistance contract (`CELLS-AND-PODS.md`): no pick or score on the item, each claim with its evidence class.
 - **Rules in force.** It keeps for its HOAC seat, and for every position it serves, the rules in force today, with superseded and lapsed items marked.
 - **Duty deputy.** Where the seat has one, recurring asks are answered by the duty deputy from signed, unexpired rulings, and everything else is raised (Library part 49GAION Duty Deputy).
