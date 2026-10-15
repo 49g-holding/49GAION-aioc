@@ -1,0 +1,25 @@
+# position-fields (Position Principle, GOV 15 October 2026). Not a required check at first;
+# it becomes required only after it runs green on main. Light and pattern-based: every field
+# that points to a human seat holds a position code, never a person, and a decision record's
+# "Decided by" line names a seat. Self-test: .github/tests/position_fields_selftest.sh.
+name: position-fields
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  position-fields:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Self-test
+        run: bash .github/tests/position_fields_selftest.sh
+      - name: Check human-pointing fields
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 .github/scripts/check_position_fields.py
