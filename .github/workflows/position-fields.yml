@@ -23,3 +23,11 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 .github/scripts/check_position_fields.py
+      - name: Install PyYAML
+        run: python3 -m pip install --quiet pyyaml
+      - name: Arrangement self-test
+        run: bash .github/tests/arrangements_selftest.sh
+      - name: Check arrangement structure
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 .github/scripts/check_arrangements.py
