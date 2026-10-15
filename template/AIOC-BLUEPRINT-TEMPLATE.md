@@ -60,7 +60,7 @@ blueprint:
 | Organisation | `<organisation>` |
 | Made from | the Library blueprint `<name>` `<version>`, or "none" |
 | Template | 49GAION AIOC Blueprint Template `<version>` at `<commit>` |
-| Mother | `<name, version>`, or "none yet" |
+| Mother | `<name, version>`, or "none yet". **Addition (GOV, 16 October 2026; `49GAION/DR-0019`).** A Library mother is named in the Library register (`library/README.md` of `49GAION-protocol`), pinned by repository, path, version, commit and SHA-256. Where this file is itself a Library mother, it holds no organisation's data, and the organisation's own values live in its records repository (Naming Standard R9) |
 | Blueprint version and status | `<vN.N.N>` · `<draft / in force / replaced>` |
 | Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
 | Reports to | the position or office above it |
@@ -104,7 +104,7 @@ card:
     definition: { location: "<repository and path of this file>", version: "<commit or version>" }
     delivery: { rollback: "one-click" }
     connectors:
-      - { role: "<tool role, e.g. task tracking>", connector: "<connector id>", access_managed_in: "panel" }
+      - { role: "<tool role, e.g. task tracking>", connector: "<connector id>", access_managed_in: "panel" }   # the Panel shows and requests it; the grant is signed at the tool gateway as connect-external-port (49GAION/DR-0019)
     gateway: { metering_id: "<per-AIOC metering id on the shared AI gateway>" }
   # Added in v1.5.0: every key the unit card schema requires (spec/schemas/unit-card.schema.json).
   full_name: "<Full name>"
@@ -230,6 +230,8 @@ Every AIOC has these: Chief of Staff, Input socket and Panel, and an Office wher
 
 One block per function the AIOC performs. Use the **four-part capability form** (Annex A). Name each capability by a plain English name, with no code.
 
+**Addition (GOV, 16 October 2026; `49GAION/DR-0019`): the stages, for an AIOC whose work runs in stages.** Before the capabilities, a table `5.0 The stages: input, output, done-test`, one row per stage: its ID, plain name, run state, gate, exact input, exact output, done-test and the human decision it needs. Each stage has one input, one output and one done-test, and each capability's **Done when** row (Annex A.1) names the gate it closes. A design stage of the Library (the Protocol section The design chain) also states there its release notice to the next stage and how it carries each return to an end.
+
 ### 5.N `<Capability name>`
 #### Definition
 #### Process (SOP)
@@ -286,6 +288,7 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 - **Re-run triggers:** any change to a model, instructions, this AIOC's card, this blueprint or the 49GAION Operating Protocol re-runs the affected tests automatically; also any change to tools or access, an Input socket converter or the AIOC's standard format, or any shared panel part.
 - **Evidence levels:** `MEASURED_IN_BUILD_ENVIRONMENT` ranks above `OWNER_ATTESTED`; only a measured score counts toward widening authority (the owner requests with the score attached; the `[ORG]HOAC-ACS` seat decides and OCO prepares, checks and carries out).
 - **Complete** only when every capability's test has a visible result.
+- **Addition (GOV, 16 October 2026; `49GAION/DR-0019`): the Library's cases.** Where the AIOC is made from a Library part, its fixed test keeps the Library part's cases, and where the Library numbers added cases in its own series, this section maps each Library case to the AIOC's own cases that cover it. A Library case with no AIOC case fails the joining test.
 
 **Checks that are not fixed tests (GOV, 14 October 2026).** Each such check declares how it is placed and when it may block (Standard §3.2). A fixed test and a Human Floor negative test never appear in this table.
 
@@ -464,6 +467,7 @@ pod:
 | Limits | what it may never do |
 | Sources | the governing texts it rests on, by ID and version |
 | Status | draft, in force or replaced |
+| Done when | the test or gate that closes it, by name: what a reader can check to know the capability's work is done. Required for every functional capability; a standard capability takes it from its fixed test. **Addition (GOV, 16 October 2026; `49GAION/DR-0019`)** |
 
 ### A.2 Process (SOP) — must contain
 | Field | Content |

@@ -1,0 +1,56 @@
+# Reference workflow for the writing repository of an AIOC (docs/WRITING-REPOSITORY.md).
+# Copy it to .github/workflows/checks.yml and keep only the jobs that apply.
+# cards: the committed cards are what tools/make_cards.py generates, valid against 49GAION-protocol.
+# contracts: tools/check_contracts.py, with every outside text read at the commit pinned in contracts/PINS.json.
+# no-org-names: the scanner of 49GAION-protocol, for a public repository.
+name: checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 49g-holding/49GAION-protocol
+          path: .deps/protocol
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml==6.0.2 jsonschema==4.23.0 referencing==0.35.1
+      - name: Generate and check the cards
+        run: python3 tools/make_cards.py .deps/protocol/spec/schemas
+      - name: The committed cards are the generated cards
+        run: git diff --exit-code -- cards
+      - name: Read the pinned commit of the Library's design return contract
+        id: pin
+        run: echo "commit=$(python3 -c "import json; print(json.load(open('contracts/PINS.json'))['design_return_contract']['commit'])")" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: 49g-holding/49GAION-protocol
+          ref: ${{ steps.pin.outputs.commit }}
+          path: .deps/protocol-pin
+      - name: Check the contracts
+        run: python3 tools/check_contracts.py --design-return .deps/protocol-pin/library/contracts/design-return.schema.json
+
+  no-org-names:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 49g-holding/49GAION-protocol
+          path: .deps/protocol
+      - name: Scan tracked files
+        run: |
+          hits=$(bash .deps/protocol/.github/scripts/no-org-names.sh | grep -v '^\.deps/' || true)
+          if [ -n "$hits" ]; then echo "$hits"; exit 1; fi
