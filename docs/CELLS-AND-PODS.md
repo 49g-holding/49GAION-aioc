@@ -17,6 +17,21 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 9. **Attached Cells (v1.5.0).** An attached AI Cell sits in the same Blueprint as the Cell it serves, has the same parent as that Cell and names its person's Cell in `attached_to`. It serves that seat only. When the filler changes, its memory of the previous filler is sealed. Whatever its filler, an attached Cell, including a Chief of Staff, never signs for its person (Protocol §4.10).
 10. **Two relations (v1.5.0).** `parent` names only the AIOC or Pod whose Blueprint holds the Cell's card; `accountable_to` names the human Cell carrying a HOAC label to which the Cell answers. A Cell is never a parent; nothing sits inside a Cell (Standard §1.7).
 11. **A label on a human seat (v1.5.0).** A HOAC label sits only on a Cell whose filler kind is human. If that seat is empty or filled by an AI, the label's powers are held (Standard §4.1).
+12. **Sensitivity class and two thresholds (GOV, 14 October 2026).**
+    - The card records the sensitivity class of the Cell's work (`sensitivity`), which sets its default filler kind (Standard §1.5).
+    - Its fixed test records two thresholds: the run of passes that makes a move toward AI eligible (`move_threshold`), and the lower score over a window that moves the work back (`return_threshold`, `window`).
+    - Passing the first makes the move eligible only; the move itself is signed. Moving back is never held.
+13. **The assistance contract (GOV, 14 October 2026).** An attached AI Cell, or any AI Cell that prepares material for a human seat, follows the assistance contract (Standard §5.2):
+    - It prepares and never decides.
+    - It never orders, sequences, hides or waits on the holder.
+    - It validates before it shows, and labels each claim with its evidence class.
+    - It shows a short list with "leave it as it is", and never pre-fills the seat's rationale.
+    - It is measured only in aggregate, and runs quiet windows.
+    - It has a switch, a floor, a fallback, a budget and a degradation order.
+14. **Engine binding (GOV, 14 October 2026).**
+    - An AI Cell's engine and model are a versioned binding on its card (`engine_binding`), kept apart from its role and memory, and switched at the next run.
+    - A change within the signed tier re-runs the fixed test. A change of tier, or below the floor, is `change-filler` (Standard §4.4, items 6 to 11).
+    - An unattended AI Cell declares its `cadence`.
 
 ## 2. Pod
 
@@ -26,12 +41,16 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 4. **Stop.** Stopping a Pod stops every Cell in it. Its stop door is outside it.
 5. **HOAC label.** A Pod may carry a HOAC label, as a field of its card.
 6. **Label holder or decision rule (v1.5.0).** A Pod with a HOAC label names its `label_holder`, one human Cell in it, or, when it decides together, a `decision_rule`: member Cells, quorum, majority, chair and casting vote. Each member signs under their own Cell; one person holding two seats in the same body counts once (Standard §4.1).
+7. **Temporary Pod (GOV, 14 October 2026).** Work that spans several units may get a temporary Pod with one shared acceptance test, one accountable human seat and a recorded `retirement_condition`; when it needs nesting, it is a temporary AIOC instead. It is created and retired like any part, and takes an ordinary code (Standard §1.7).
+8. **An Office of instances (GOV, 14 October 2026).** A position run by several AI instances is an Office: a Pod of Chief of Staff Cells, one per instance, each with its own credential (`STANDARD-CAPABILITIES.md` §4.1).
 
 ## 3. Nature and role
 
 The role and nature of a Pod or an AIOC are read from the type of its top Cell. There is no rule that every AIOC must contain a given kind of Cell or Pod.
 
 **Top Cell (v1.5.0).** The card's `top_cell` names exactly one Cell whose parent is that part. Co-leadership is a Pod with a decision rule. The top Cell gives the part's lead; the AIOC Type gives why it exists (Standard §1.7).
+
+**Assignment (GOV, 14 October 2026).** Besides `parent` and `accountable_to`, a Cell or a Pod may carry dated `assignments` to programmes or engagements it serves. An assignment carries no authority and opens no access; a title names the role, never the assignment (Standard §1.7).
 
 ## 4. External attachments
 
