@@ -174,6 +174,8 @@ Every unit has one accountable `[ORG]HOAC-ACS` seat (label, v1.5.0: every AIOC, 
 |---|---|---|---|---|
 | | | | an agent / a person (holders register) | |
 
+**Reading note (GOV, 15 October 2026).** "Run today by" records only whether an agent or a human occupant runs the position; "a person (holders register)" reads "a human occupant, recorded only in top management's own register", outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
+
 Each position's role pack (job description, responsibilities, limits, permissions, checklists, KPIs, coverage, handover, first week) is carried in the role cards of the capabilities it performs.
 
 ---
@@ -356,6 +358,8 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Duty deputy: ruling life and weekly sample size | | 90 days; 10 | | | | |
 | Quiet windows: share of lower-stakes decisions | | none: must be set | | | | |
 
+**Reading note (GOV, 15 October 2026).** The row "Seat load weights and the load line" sets load and coverage per position only (Standard §4.1, item 13). A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
+
 ---
 
 ## 16. Type
@@ -488,6 +492,8 @@ pod:
 | Deputy and cover | who acts when it cannot |
 | Fixed test and score | the test ID |
 | Card version and status | — |
+
+**Reading note (GOV, 15 October 2026).** "Performed by" names a bot, an agent or a human position; "a person (holder in the holders register only)" reads "a human occupant of the position, recorded only in top management's own register". A role card never counts or compares the persons behind positions: two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
 
 ### A.4 Fixed test — must contain
 | Field | Content |
