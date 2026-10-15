@@ -388,6 +388,8 @@ cell:
   fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
 ```
 
+**Position codes only (GOV, 15 October 2026).** Every field of a card that points to a human (`accountable_to`, `label_holder`, `attached_to`, a signer's seat, a fixed test's seat) takes a position code only, in the form `<[ORG]CELL-INITIALS>`, `<[ORG]POD-INITIALS>` or `<[ORG]AIOC-INITIALS>`, never a person's name, initials of a person or internal person ID. Who holds a position is kept only in the organisation's private register copy (Standard §5.2, Position Principle).
+
 **Complete card forms (v1.5.0).** The block above is kept as written; the blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names its person's Cell in `attached_to`.
 
 ```yaml
