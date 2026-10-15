@@ -8,6 +8,7 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 
 1. **The smallest part.** A Cell is the smallest part of an AIOC. Nothing sits inside a Cell.
 2. **Seat and filler.** A Cell is a fixed seat. Its filler, a human or an AI agent, is replaceable. A change of filler is a recorded event in the unit register, never a new Cell, and the Cell keeps its code.
+   - **Reading note (GOV, 15 October 2026).** A human filler is present in the system as the seat, a position: a legal persona whose nature is human, which decides, signs and is accountable under the Cell's code. The natural person behind it exists outside the system's knowledge; only top management links the two, in its own record. The Cell's record stays with the seat when its occupant changes, as it does when an AI filler's engine or model changes (Standard §1.1, items 9 and 10).
 3. **Type.** Every Cell card has a type from an open list that each organisation configures in its `[ORG]AION`, for example Human Seat, Human Reviewer, AI Agent, AI Chief of Staff.
 4. **Filler kind.** The card states which kind of filler the seat allows: human, AI, or either.
 5. **Chief of Staff.** The Chief of Staff of an AIOC is itself a Cell (type AI Chief of Staff, or the organisation's equivalent). An Office is a Pod of Chief of Staff Cells (`STANDARD-CAPABILITIES.md` §4.1).
