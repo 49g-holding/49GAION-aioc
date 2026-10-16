@@ -14,6 +14,7 @@
 | [`docs/CELLS-AND-PODS.md`](docs/CELLS-AND-PODS.md) | Cells and Pods: the parts inside an AIOC's Blueprint |
 | [`docs/STANDARD-CAPABILITIES.md`](docs/STANDARD-CAPABILITIES.md) | Default text of the standard capabilities: Chief of Staff, Office, Input socket, Panel |
 | [`template/AIOC-BLUEPRINT-TEMPLATE.md`](template/AIOC-BLUEPRINT-TEMPLATE.md) | The blueprint template |
+| [`docs/WRITING-REPOSITORY.md`](docs/WRITING-REPOSITORY.md) | What an AIOC's writing repository holds and the checks it runs (GOV, 16 October 2026), with the reference workflow [`template/writing-repository-checks.yml`](template/writing-repository-checks.yml) |
 | [`decisions/`](decisions/) | Links to the decision records, kept once in the hub |
 
 ## Related repositories
