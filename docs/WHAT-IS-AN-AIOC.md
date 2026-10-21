@@ -67,7 +67,7 @@ Every AIOC has its own runtime, woken from its queue.
 
 ## 7. Ports and stop
 
-Every AIOC has one input and one output of each kind (AI and HU), each with a Port card, plus the stop door: a mandatory, queue-less stop port of type HU, enforced outside the unit (Standard §6.1, §4.3). Stopping an AIOC stops every unit inside it; a human port never passes through an AI unit. An `[ORG]AION` is handed over only when the stop ports of all its units, its `[ORG]HOAC-GOV`, its Human Floor and its accountability chain are in place (Standard §1.4).
+Every AIOC has one input and one output of each kind (AI and HU), each with a Port card, plus the stop door: a mandatory, queue-less stop port of type HU, enforced outside the unit (Standard §6.1, §4.3). Stopping an AIOC stops every unit inside it; a human port never passes through an AI unit.
 
 ## 8. The Library, lineage, merge and split
 
