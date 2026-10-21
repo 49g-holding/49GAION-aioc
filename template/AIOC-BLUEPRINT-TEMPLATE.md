@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v1.6.0"
+    version: "v1.7.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v1.6.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v1.7.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
 >
@@ -523,4 +523,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.5.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v1.7.0 · Powered by 49GAION*
