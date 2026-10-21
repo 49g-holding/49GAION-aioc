@@ -370,7 +370,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 - **Why this AIOC exists in this organisation:** one sentence (the `[ORG]AION` decides which AIOCs the organisation has).
 - **Type-specific test:** `<test ID and version>` · result `NOT_RUN`.
 
-The Type sets no count limit, no default connections and no mandatory sections. The Panel is a capability (§4.4), not a type. The AION Builder is a 49GAION capability, not an AIOC type (Standard §1.2).
+The Type sets no count limit, no default connections and no mandatory sections. The Panel is a capability (§4.4), not a type.
 
 ## 17. Cells and Pods
 
