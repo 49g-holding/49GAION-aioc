@@ -6,6 +6,8 @@
 
 **The product: `[ORG]AION`**, the AI Operating Nexus of one organisation; its one definition is in the 49GAION Standard, §1.3, item 1 ([`49GAION/upstream/49GAION-UPSTREAM.md`](https://github.com/49g-holding/49GAION/blob/main/upstream/49GAION-UPSTREAM.md)).
 
+**Live (GOV, 22 October 2026).** A blueprint filled from this template is a starting point for the organisation's own `[ORG]AION`, which designs and configures the AIOC inside the organisation and keeps it current as AI improves. It is never a finished configuration made elsewhere and installed as it is ([master definition, section 2.2](https://github.com/49g-holding/49GAION/blob/main/49GAION.md#22-human-native-and-ai-native)).
+
 ## What is here
 
 | Path | Holds |
