@@ -29,6 +29,8 @@
 - **managing agents**, which lead and coordinate other agents through control, planning or direction;
 - **connecting agents**, which connect humans with agents: they report to a human, assist them, and carry their requests to the agents.
 
+**Addition (`49GAION/DR-0042`): order, never drop.** A Chief of Staff may order and summarise what reaches its human position; it never drops or delays any of it, and the raw record is always open to that position. The protected route of a report, an objection or a stop never passes through any AI, the core included (`49GAION-FRAMEWORK.md`, point 16).
+
 Each unit has one input and one output of each kind (AI and HU), plus the stop door. The Chief of Staff is the AIOC's voice to its HOAC seat; input arrives only through the typed ports and the Input socket, and HU ports, including the stop door, never pass through an AI. Its summaries link every claim to its evidence.
 - **Duties:** intake (record every item with ID, version, status, owner); monitor and analyse the agents' reports and performance; prepare; brief the HOAC seat each morning and whenever called (decisions needed with a recommendation and consequences, status with evidence, test scores, directives replaced since the last brief); carry decisions through to closure with evidence; send lessons to Self-Improvement, held inside `[ORG]HOAC-TM`, as proposals; open and receive Work Items for the AIOC.
 - **Limits:** no authority beyond what has been opened for it; it holds no accountability, grants no access and changes no limits; tools, access and credentials live in the Panel, never in its instructions. With no human present, it reads, records and triages only, unless the Configuration slot `unattended_action` allows more.
