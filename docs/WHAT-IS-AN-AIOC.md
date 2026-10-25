@@ -20,6 +20,8 @@ An AIOC = **Panel + Back office + Versioned Definition**.
 | **Back office** | The AIOC's live working space (its instructions, files and settings) where its agents, led by its Chief of Staff, do the work. Human conversation with it goes through the Panel. |
 | **Versioned Definition** | The AIOC's one blueprint in git, from which the Panel and the Back office are built and rebuilt. |
 
+**Reading (`49GAION/DR-0041`): panel and back office.** The panel is the interface: the organisation's own, unique to it, written in code, made from the 49GAION patterns; every task of the unit can be controlled from it. The back office is the AI chat workspace where the unit's AI works: an authorised interface too, through the same controls, and the keeper of the panel, also after the panel is built, so no separate admin back office is written. Each covers the other: if a panel fails, the work goes on from the back office, which can rebuild it. The HU ports, stop doors and signature prompts stay at the human gateway surface. "The only surface humans use" and "human conversation goes through the Panel" are read with this.
+
 **One file, no drift.** The blueprint is the only definition. A change to the AIOC is a tested change to the blueprint; the Panel and Back office follow it.
 
 ## 3. Capabilities
@@ -41,6 +43,8 @@ Every AIOC has a **Type**, recorded on its card, never in its name. The Type say
 | **Connector** | Other AIOCs must be connected and coordinated |
 
 The list is open. `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: every AIOC, at any depth, joins, is fixed, maintained and upgraded through it; it gives no orders on what work is done. `[ORG]HOAC-TM` is the human hub: it decides and orders. OCO sits under TM: TM orders it, meets its human needs and is its accountable seat; TM and `[ORG]HOAC-GOV` may each stop it (Standard §4.2, §4.3).
+
+**Reading (`49GAION/DR-0041`).** The hub of the operation, human and AI, is the Top Management Group, the first AIOC under the core, which builds everything in the operation. 49GAION requires no separate AI hub unit; where an organisation has one, `[ORG]AIOC-OCO` serves the operation under Top Management. Wherever this document names OCO, it reads: the hub of the operation, or that separate unit.
 
 ## 5. The accountable seat and OCO
 
@@ -89,6 +93,7 @@ Every AIOC has one input and one output of each kind (AI and HU), each with a Po
 2. Seen from outside, a composite AIOC is one unit: one card, its ports and its stop door. Its Chief of Staff is the door for AI work to its inner units; the HU ports and stop doors of inner units never pass through it.
 3. Every inner unit has its own card and blueprint (label, v1.5.0: an inner AIOC has a card and a blueprint; a Pod or a Cell has a card in its AIOC's Blueprint), listed in the parent's blueprint by link. Its place is the `parent` field of its card; its code never changes when it moves, and a change of parent needs the approval of the human seat over it (Naming Standard R14).
 4. Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
+   - **Reading (`49GAION/DR-0041`).** Through the hub of the operation, the Top Management Group, or a separate `[ORG]AIOC-OCO` serving it.
 
 ## 11. Working with other units
 

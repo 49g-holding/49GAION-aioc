@@ -31,6 +31,8 @@ blueprint:
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
 >
+> **Reading (`49GAION/DR-0041`).** Wherever this template names `[ORG]AIOC-OCO`, read: the hub of the operation, the Top Management Group, or a separate `[ORG]AIOC-OCO` where the organisation has one. The panel is the organisation's own interface, written in code; the back office, the AI chat workspace, keeps it.
+>
 > **How to fill it.**
 > 1. Copy this file into the AIOC's writing repository as `blueprint/<AIOC>-BLUEPRINT.md`. Record in the metadata block the **template version and the commit** it was copied from (each AIOC records this in its own repository; `49GAION-aioc` keeps no copy of any AIOC's blueprint), and the **mother blueprint and version** it was customised from, or "none yet".
 > 2. Fill every field. If a field does not apply, write "none" and say why.

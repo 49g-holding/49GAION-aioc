@@ -117,6 +117,7 @@ A new input type is one new converter, added as a tested change. Outside tools a
 - **Always:** the member's own live sign-in; caps on outside and model calls; outside text treated as data; rollback for every release.
 - **The only surface, with three exceptions (v1.5.0):** except the stop door, signature prompts and the accountability path, which the Panel only links to (Standard §6.1, item 6). Those are served at the tool gateway through a sign-in that no AI built, hosts or can change.
 - The Panel is built, customised and maintained by `[ORG]AIOC-OCO`; any AIOC request about the Panel goes to OCO (Standard §5.3).
+- **Reading (`49GAION/DR-0041`).** The panel is the organisation's own interface, written in code, from which every task of the unit can be controlled. The AIOC's back office, the AI chat workspace, is an authorised interface too and keeps the panel, also after it is built; where an organisation has no separate `[ORG]AIOC-OCO`, the panel is built by the hub of the operation, the Top Management Group, from the 49GAION patterns.
 
 **Process.** A change is a tested change to the blueprint, reviewed by someone other than the writer; the Panel and Back office are rebuilt from it; the running Panel shows the version it was built from.
 
