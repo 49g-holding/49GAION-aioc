@@ -2,7 +2,7 @@
 # ── Blueprint metadata (machine-readable; the panel generator and the back-office builder read this block) ──
 blueprint:
   aioc: "<[ORG]AIOC-INITIALS>"            # e.g. [ORG]AIOC-SL or TenAIOC-SL. Only cores carry a [ORG]AIOC code; it never changes when the AIOC moves.
-  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO; its place, never part of its code (label, v1.5.0: an example only; a top-level AIOC's parent is the Charter of its [ORG]AION)
+  parent: "<code of the unit that holds this AIOC, or none>"   # e.g. [ORG]AIOC-OCO, an example only; its place, never part of its code; a top-level AIOC's parent is the Charter of its [ORG]AION
   full_name: "<Full name>"                # e.g. Organization Core Office
   organisation: "<organisation>"          # e.g. Ten
   type: "<foundational | structural | specialised | connector | other>"   # why the AIOC exists; a card field, never part of the name
@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v1.8.0"
+    version: "v2.0.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,11 +27,9 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v1.8.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v2.0.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
-> **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2).
->
-> **Reading (`49GAION/DR-0041`).** Wherever this template names `[ORG]AIOC-OCO`, read: the hub of the operation, the Top Management Group, or a separate `[ORG]AIOC-OCO` where the organisation has one. The panel is the organisation's own interface, written in code; the back office, the AI chat workspace, keeps it.
+> **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2). Where this template names `[ORG]AIOC-OCO`, it means the hub of the operation: the Top Management Group, or a separate `[ORG]AIOC-OCO` where the organisation has one. The Panel is the organisation's own interface, written in code; the Back office, the AI chat workspace, keeps it.
 >
 > **How to fill it.**
 > 1. Copy this file into the AIOC's writing repository as `blueprint/<AIOC>-BLUEPRINT.md`. Record in the metadata block the **template version and the commit** it was copied from (each AIOC records this in its own repository; `49GAION-aioc` keeps no copy of any AIOC's blueprint), and the **mother blueprint and version** it was customised from, or "none yet".
@@ -42,6 +40,8 @@ blueprint:
 > 6. Write positions, never people. A person's name appears only in the holders register.
 > 7. Cite every rule to its source by ID and version. Never invent a fact, a version, a score or an appointment. `NOT_RUN` is never PASS.
 > 8. **Names.** Capabilities have plain, recognisable English names — Chief of Staff, Office, Input socket, Panel, and the AIOC's own (for example Service Desk). They carry **no code and no branding**. Branded names exist only at the 49GAION level: `49GAION` for the framework, `[ORG]AION` for its product, `[ORG]AIOC-…` for cores (hub `standards/49GAION-NAMING-STANDARD.md`). The retired codes listed there are never used.
+
+Sources: DR-0041.
 
 ---
 
@@ -62,7 +62,7 @@ blueprint:
 | Organisation | `<organisation>` |
 | Made from | the Library blueprint `<name>` `<version>`, or "none" |
 | Template | 49GAION AIOC Blueprint Template `<version>` at `<commit>` |
-| Mother | `<name, version>`, or "none yet". **Addition (GOV, 16 October 2026; `49GAION/DR-0019`).** A Library mother is named in the Library register (`library/README.md` of `49GAION-protocol`), pinned by repository, path, version, commit and SHA-256. Where this file is itself a Library mother, it holds no organisation's data, and the organisation's own values live in its records repository (Naming Standard R9) |
+| Mother | `<name, version>`, or "none yet". A Library mother is named in the Library register (`library/README.md` of `49GAION-protocol`), pinned by repository, path, version, commit and SHA-256. Where this file is itself a Library mother, it holds no organisation's data, and the organisation's own values live in its records repository (Naming Standard R9) |
 | Blueprint version and status | `<vN.N.N>` · `<draft / in force / replaced>` |
 | Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
 | Reports to | the position or office above it |
@@ -72,13 +72,13 @@ blueprint:
 | Back office | its Back office workspace, and the commit it was last built from |
 | Attribution | Powered by 49GAION |
 
+Sources: DR-0019.
+
 ---
 
-## 1. Card (49GAION Operating Protocol §4)
+## 1. Card (49GAION Operating Protocol §3)
 
-> **Correction (v1.5.0).** "Protocol §4" in this heading reads "Protocol §3" (the card); §4 is the Work Item. The heading is kept as written.
-
-The card declares what this AIOC receives, what it delivers, and in what format. It is the only card for this AIOC; the protocol AIOC's map reads it from here. It follows `spec/schemas/unit-card.schema.json` in `49g-holding/49GAION-protocol`.
+The card declares what this AIOC receives, what it delivers, and in what format; it is the card of 49GAION Operating Protocol §3 (Protocol §4 is the Work Item). It is the only card for this AIOC; the protocol AIOC's map reads it from here. It follows `spec/schemas/unit-card.schema.json` in `49g-holding/49GAION-protocol`.
 
 ```yaml
 card:
@@ -108,11 +108,11 @@ card:
     connectors:
       - { role: "<tool role, e.g. task tracking>", connector: "<connector id>", access_managed_in: "panel" }   # the Panel shows and requests it; the grant is signed at the tool gateway as connect-external-port (49GAION/DR-0019)
     gateway: { metering_id: "<per-AIOC metering id on the shared AI gateway>" }
-  # Added in v1.5.0: every key the unit card schema requires (spec/schemas/unit-card.schema.json).
+  # With the keys below, the card carries every key the unit card schema requires (spec/schemas/unit-card.schema.json).
   full_name: "<Full name>"
   version: "<N.N.N>"
   lineage: { id: "<code it derives from>", version: "<N.N.N>", relation: "<original | derived | merged | split>" }
-  lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"   # read: lifecycle_state before joined
+  lifecycle_state: "<proposed | designed | built | joined | live | replaced | retired>"   # a state before joined: see Joining the protocol, below
   blueprint_version: "<vN.N.N>"
   template_version: "<vN.N.N>"
   accountable_to: "<code of the human Cell carrying a HOAC label that this AIOC answers to>"   # Standard §1.7, item 12
@@ -140,7 +140,7 @@ card:
     unattended_action: "<read-record-triage | act-within-limits>"
 ```
 
-**Joining the protocol.** This AIOC joins the 49GAION Operating Protocol only after every input and output claimed on this card passes fixed samples. A claim that fails is removed from the card. Until then the card is marked `joined: false` (read: lifecycle_state before joined) and no Work Item is routed to it.
+**Joining the protocol.** This AIOC joins the 49GAION Operating Protocol only after every input and output claimed on this card passes fixed samples. A claim that fails is removed from the card. Until then the card's `lifecycle_state` is a state before `joined`, and no Work Item is routed to it.
 
 ---
 
@@ -151,7 +151,7 @@ The design uses general terms; this table says what each term is in this organis
 
 | Term in the blueprint | In `<organisation>` |
 |---|---|
-| The Top Office (the only centre of decision; label, v1.5.0: the Office of the root AIOC, the Charter; decisions are signed by human Cells carrying HOAC labels) | |
+| The Top Office (the only centre of decision: the Office of the root AIOC, the Charter; decisions are signed by human Cells carrying HOAC labels) | |
 | **`[ORG]AIOC-OCO`** (every `[ORG]HOAC-ACS` request about this unit's AIs goes to it) | |
 | The engineering division | |
 | The IT and infrastructure division | |
@@ -170,13 +170,13 @@ The design uses general terms; this table says what each term is in this organis
 
 ## 3. Positions
 
-Every unit has one accountable `[ORG]HOAC-ACS` seat (label, v1.5.0: every AIOC, Pod and Cell answers along `accountable_to` to the nearest HOAC above it; the ACS seat meant is that HOAC's), held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
+Every AIOC, Pod and Cell has one accountable `[ORG]HOAC-ACS` seat: it answers along `accountable_to` to the nearest HOAC above it, and the seat is that HOAC's, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
 
 | Position (standard title) | Purpose | Reports to | Run today by | Deputy |
 |---|---|---|---|---|
-| | | | an agent / a person (holders register) | |
+| | | | an agent / a human occupant (recorded only in top management's own register) | |
 
-**Reading note (GOV, 15 October 2026).** "Run today by" records only whether an agent or a human occupant runs the position; "a person (holders register)" reads "a human occupant, recorded only in top management's own register", outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
+"Run today by" records only whether an agent or a human occupant runs the position; the occupant is recorded only in top management's own register, outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
 
 Each position's role pack (job description, responsibilities, limits, permissions, checklists, KPIs, coverage, handover, first week) is carried in the role cards of the capabilities it performs.
 
@@ -232,7 +232,9 @@ Every AIOC has these: Chief of Staff, Input socket and Panel, and an Office wher
 
 One block per function the AIOC performs. Use the **four-part capability form** (Annex A). Name each capability by a plain English name, with no code.
 
-**Addition (GOV, 16 October 2026; `49GAION/DR-0019`): the stages, for an AIOC whose work runs in stages.** Before the capabilities, a table `5.0 The stages: input, output, done-test`, one row per stage: its ID, plain name, run state, gate, exact input, exact output, done-test and the human decision it needs. Each stage has one input, one output and one done-test, and each capability's **Done when** row (Annex A.1) names the gate it closes. A design stage of the Library (the Protocol section The design chain) also states there its release notice to the next stage and how it carries each return to an end.
+**The stages, for an AIOC whose work runs in stages.** Before the capabilities, a table `5.0 The stages: input, output, done-test`, one row per stage: its ID, plain name, run state, gate, exact input, exact output, done-test and the human decision it needs. Each stage has one input, one output and one done-test, and each capability's **Done when** row (Annex A.1) names the gate it closes. A design stage of the Library (the Protocol section The design chain) also states there its release notice to the next stage and how it carries each return to an end.
+
+Sources: DR-0019.
 
 ### 5.N `<Capability name>`
 #### Definition
@@ -259,7 +261,7 @@ One block per function the AIOC performs. Use the **four-part capability form** 
 |---|---|---|
 | | | |
 
-All model calls go through the **shared AI gateway** at the 49GAION level (keys, cost and logs in one place). Correction (v1.5.0): the gateway is the tool gateway in the `[ORG]AION`; 49GAION runs no gateway for an `[ORG]AION` (Standard §4.4, item 11).
+All model calls go through the **shared AI gateway**: the tool gateway in the `[ORG]AION`, with keys, cost and logs in one place; 49GAION runs no gateway for an `[ORG]AION` (Standard §4.4, item 11).
 
 **Connectors and metering.** Each tool is reached through a **swappable connector**, recorded by tool **role**; access is granted and withdrawn in the Panel. This AIOC's AI usage and cost are **metered separately** on the shared AI gateway; its **budget cap** is set in §15. A new tool enters only by a sourced proposal, a side-by-side test against the current tool and an update of the part's card.
 
@@ -290,7 +292,7 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 - **Re-run triggers:** any change to a model, instructions, this AIOC's card, this blueprint or the 49GAION Operating Protocol re-runs the affected tests automatically; also any change to tools or access, an Input socket converter or the AIOC's standard format, or any shared panel part.
 - **Evidence levels:** `MEASURED_IN_BUILD_ENVIRONMENT` ranks above `OWNER_ATTESTED`; only a measured score counts toward widening authority (the owner requests with the score attached; the `[ORG]HOAC-ACS` seat decides and OCO prepares, checks and carries out).
 - **Complete** only when every capability's test has a visible result.
-- **Addition (GOV, 16 October 2026; `49GAION/DR-0019`): the Library's cases.** Where the AIOC is made from a Library part, its fixed test keeps the Library part's cases, and where the Library numbers added cases in its own series, this section maps each Library case to the AIOC's own cases that cover it. A Library case with no AIOC case fails the joining test.
+- **The Library's cases.** Where the AIOC is made from a Library part, its fixed test keeps the Library part's cases, and where the Library numbers added cases in its own series, this section maps each Library case to the AIOC's own cases that cover it. A Library case with no AIOC case fails the joining test.
 
 **Checks that are not fixed tests (GOV, 14 October 2026).** Each such check declares how it is placed and when it may block (Standard §3.2). A fixed test and a Human Floor negative test never appear in this table.
 
@@ -299,6 +301,8 @@ All model calls go through the **shared AI gateway** at the 49GAION level (keys,
 | | | | | |
 
 - **Discriminating evidence.** A passing check counts only if it has been shown able to fail on the case it guards, and evidence is written by the runner, never by the worker.
+
+Sources: DR-0019.
 
 ## 10. Build: what is generated from this file
 | Built thing | Generated from | Recorded where |
@@ -340,7 +344,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Budget cap (AI spend through the shared AI gateway, per AIOC) | | none: must be set | | | | |
 | Unattended action (`unattended_action`: what the Chief of Staff may do after an automatic wake-up with no human present; Protocol §7) | | read-record-triage | | | | |
 | Process record defaults (Standard §2.3; `spec/schemas/process-record.schema.json` in `49g-holding/49GAION-protocol`): golden set id, margin, rounds, dwell time, judge, assurance unit, approving seat | | none: must be set | | | | |
-| Final authority (label, v1.5.0: the final authority is GOV; the seat accountable for OCO decides only on the objection path; each `[ORG]AION` fills it; on the objection path it is the HOAC seat accountable for OCO, first row) | | none: must be set | | | | |
+| Final authority (GOV; each `[ORG]AION` fills it; on the objection path, and only there, it is the HOAC seat accountable for OCO, first row, which decides) | | none: must be set | | | | |
 
 **Configuration added (GOV, 14 October 2026).** Each value records who set it, when, and in which version. Where 49GAION offers a default, the slot may keep it.
 
@@ -356,14 +360,14 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Stale work: finish window, drop age, cap on work in flight | | none: must be set | | | | |
 | Planned halt: grace time and resume order | | 10 minutes; order must be set | | | | |
 | Signature referral time for personal signatures | | 15 minutes | | | | |
-| Seat load weights and the load line; days before a critical seat is raised again | | 2 for a seat answering for a unit, 1 for a signing or on-call seat, 0.5 otherwise; line 4; 7 days | | | | |
+| Seat load weights and the load line (load and coverage per position only; Standard §4.1, item 13); days before a critical seat is raised again | | 2 for a seat answering for a unit, 1 for a signing or on-call seat, 0.5 otherwise; line 4; 7 days | | | | |
 | Spend: soft-hold fraction, protected classes of work, degradation order | | 80%; none: classes must be set | | | | |
 | Capability tiers, tier floor per sensitivity class, engine re-score schedule | | none: must be set | | | | |
 | Cadence of each unattended AI Cell | | none: must be set | | | | |
 | Duty deputy: ruling life and weekly sample size | | 90 days; 10 | | | | |
 | Quiet windows: share of lower-stakes decisions | | none: must be set | | | | |
 
-**Reading note (GOV, 15 October 2026).** The row "Seat load weights and the load line" sets load and coverage per position only (Standard §4.1, item 13). A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
+A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
 
 ---
 
@@ -383,23 +387,9 @@ The parts inside this AIOC (`docs/CELLS-AND-PODS.md`). One card per Cell and per
 | `<[ORG]CELL-INITIALS>` | CELL | `<from the organisation's list>` | `<human / ai / human-or-ai>` | `<none / [ORG]HOAC-...>` | `<code>` | `<person's Cell, for an AI assistant>` | `<test ID and version (seat)>` | `<none / service and direction>` |
 | `<[ORG]POD-INITIALS>` | POD | `<from the organisation's list>` | — | `<none / [ORG]HOAC-...>` | `<code>` | — | `<test ID and version (seat)>` | — |
 
-Superseded (v1.5.0) by the complete form below; kept as written:
-
-```yaml
-cell:
-  unit_kind: "CELL"
-  code: "<[ORG]CELL-INITIALS>"
-  parent: "<code of this AIOC or of its Pod>"
-  type: "<from the organisation's list>"
-  filler_kind: "<human | ai | human-or-ai>"
-  hoac: "<[ORG]HOAC-GOV | [ORG]HOAC-TM | [ORG]HOAC-ACS>"   # omit if none
-  attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
-  fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
-```
-
 **Position codes only (GOV, 15 October 2026).** Every field of a card that points to a human (`accountable_to`, `label_holder`, `attached_to`, a signer's seat, a fixed test's seat) takes a position code only, in the form `<[ORG]CELL-INITIALS>`, `<[ORG]POD-INITIALS>` or `<[ORG]AIOC-INITIALS>`, never a person's name, initials of a person or internal person ID. Who holds a position is kept only in the organisation's private register copy (Standard §5.2, Position Principle).
 
-**Complete card forms (v1.5.0).** The block above is kept as written; the blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names its person's Cell in `attached_to`.
+**Complete card forms.** The blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names its person's Cell in `attached_to`.
 
 ```yaml
 cell:
@@ -469,7 +459,9 @@ pod:
 | Limits | what it may never do |
 | Sources | the governing texts it rests on, by ID and version |
 | Status | draft, in force or replaced |
-| Done when | the test or gate that closes it, by name: what a reader can check to know the capability's work is done. Required for every functional capability; a standard capability takes it from its fixed test. **Addition (GOV, 16 October 2026; `49GAION/DR-0019`)** |
+| Done when | the test or gate that closes it, by name: what a reader can check to know the capability's work is done. Required for every functional capability; a standard capability takes it from its fixed test. |
+
+Sources: DR-0019.
 
 ### A.2 Process (SOP) — must contain
 | Field | Content |
@@ -488,7 +480,7 @@ pod:
 |---|---|
 | Name | plain English |
 | Position and seat | the position; its accountable `[ORG]HOAC-ACS` seat |
-| Performed by | a bot, an agent or a person (holder in the holders register only) |
+| Performed by | a bot, an agent or a human position; a human occupant is recorded only in top management's own register |
 | Purpose | one line |
 | Authority limits | alone / needs the owner / never — mirroring the panel switch |
 | Write location | the single place it writes |
@@ -499,7 +491,7 @@ pod:
 | Fixed test and score | the test ID |
 | Card version and status | — |
 
-**Reading note (GOV, 15 October 2026).** "Performed by" names a bot, an agent or a human position; "a person (holder in the holders register only)" reads "a human occupant of the position, recorded only in top management's own register". A role card never counts or compares the persons behind positions: two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
+A role card never counts or compares the persons behind positions: two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
 
 ### A.4 Fixed test — must contain
 | Field | Content |
@@ -525,4 +517,21 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-*49GAION AIOC Blueprint Template v1.8.0 · Powered by 49GAION*
+## Superseded wording, by version
+
+The wording below left the body of this text when it was written clean at `v2.0.0`. Each entry names what superseded it. Nothing is lost: the layered texts up to `v1.8.0` are kept at their tags.
+
+- **§17 Cells and Pods, the short Cell card form (original lines 386-398)** · superseded by v1.5.0, the complete card forms of §17:
+  ```text
+  cell:
+    unit_kind: "CELL"
+    code: "<[ORG]CELL-INITIALS>"
+    parent: "<code of this AIOC or of its Pod>"
+    type: "<from the organisation's list>"
+    filler_kind: "<human | ai | human-or-ai>"
+    hoac: "<[ORG]HOAC-GOV | [ORG]HOAC-TM | [ORG]HOAC-ACS>"   # omit if none
+    attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
+    fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
+  ```
+
+*49GAION AIOC Blueprint Template v2.0.0 · Powered by 49GAION*
