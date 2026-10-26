@@ -1,6 +1,8 @@
 # The writing repository of an AIOC
 
-**Addition (GOV, 16 October 2026; `49GAION/DR-0019`, `DR-0021`).** What every AIOC's writing repository holds, and the checks it runs. Drawn from the writing repositories of the design stages of the Library, which share this layout and these checks.
+What every AIOC's writing repository holds, and the checks it runs. Drawn from the writing repositories of the design stages of the Library, which share this layout and these checks.
+
+Sources: DR-0019, DR-0021; GOV, 16 October 2026.
 
 ## What it holds
 
