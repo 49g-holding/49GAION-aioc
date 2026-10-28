@@ -1,7 +1,10 @@
 # position-fields (Position Principle, GOV 15 October 2026). Not a required check at first;
 # it becomes required only after it runs green on main. Light and pattern-based: every field
 # that points to a human seat holds a position code, never a person, and a decision record's
-# "Decided by" line names a seat. Self-test: .github/tests/position_fields_selftest.sh.
+# "Decided by" line names a seat. The Overseen link between positions is checked for structure
+# only (a defined overseeing position, a timing form, no GOV overseen); since 49GAION DR-0049
+# holders, signing rules and accountable members are the organisation's own and are not read.
+# Self-tests: .github/tests/position_fields_selftest.sh and arrangements_selftest.sh.
 name: position-fields
 on:
   pull_request:
@@ -25,9 +28,9 @@ jobs:
         run: python3 .github/scripts/check_position_fields.py
       - name: Install PyYAML
         run: python3 -m pip install --quiet pyyaml
-      - name: Arrangement self-test
+      - name: Overseen link self-test
         run: bash .github/tests/arrangements_selftest.sh
-      - name: Check arrangement structure
+      - name: Check the Overseen links
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 .github/scripts/check_arrangements.py
