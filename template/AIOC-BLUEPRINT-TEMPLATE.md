@@ -37,7 +37,7 @@ blueprint:
 > 3. Keep the **standard capabilities** (§4). Adopt their default definitions (`docs/STANDARD-CAPABILITIES.md`) unless the AIOC differs, and record each difference in §11.
 > 4. Add one **functional capability** per function the AIOC performs (§5), each in the four parts.
 > 5. Write for any organisation where you can; the organisation's own names go in the organisation table (§2).
-> 6. Write positions, never people. A person's name appears only in the holders register.
+> 6. Write positions, never people. No person's name appears anywhere: who holds a position is the organisation's own mechanism, outside the system (DR-0049).
 > 7. Cite every rule to its source by ID and version. Never invent a fact, a version, a score or an appointment. `NOT_RUN` is never PASS.
 > 8. **Names.** Capabilities have plain, recognisable English names — Chief of Staff, Office, Input socket, Panel, and the AIOC's own (for example Service Desk). They carry **no code and no branding**. Branded names exist only at the 49GAION level: `49GAION` for the framework, `[ORG]AION` for its product, `[ORG]AIOC-…` for cores (hub `standards/49GAION-NAMING-STANDARD.md`). The retired codes listed there are never used.
 
@@ -64,7 +64,7 @@ Sources: DR-0041.
 | Template | 49GAION AIOC Blueprint Template `<version>` at `<commit>` |
 | Mother | `<name, version>`, or "none yet". A Library mother is named in the Library register (`library/README.md` of `49GAION-protocol`), pinned by repository, path, version, commit and SHA-256. Where this file is itself a Library mother, it holds no organisation's data, and the organisation's own values live in its records repository (Naming Standard R9) |
 | Blueprint version and status | `<vN.N.N>` · `<draft / in force / replaced>` |
-| Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
+| Accountable seat (`[ORG]HOAC-ACS`) | the seat, by position code; who holds it is the organisation's own mechanism, outside the system |
 | Reports to | the position or office above it |
 | Writing repository | `<org>aioc-<abbr>` (+ `-records`, `-records-restricted`) |
 | Code project | its code project, or "none" |
@@ -117,7 +117,7 @@ card:
   template_version: "<vN.N.N>"
   accountable_to: "<code of the human Cell carrying a HOAC label that this AIOC answers to>"   # Standard §1.7, item 12
   top_cell: "<code of exactly one Cell whose parent is this AIOC>"                            # Standard §1.7, item 11
-  hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # omit if none; with it, label_holder or decision_rule
+  hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # omit if none; with it, label_holder (decision_rule withdrawn, DR-0049)
   label_holder: "<code of the human Cell, inside this AIOC, that holds the label>"
   fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the human Cell that owns the test>" }
   skills:
@@ -170,13 +170,13 @@ The design uses general terms; this table says what each term is in this organis
 
 ## 3. Positions
 
-Every AIOC, Pod and Cell has one accountable `[ORG]HOAC-ACS` seat: it answers along `accountable_to` to the nearest HOAC above it, and the seat is that HOAC's, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
+Every AIOC, Pod and Cell has one accountable `[ORG]HOAC-ACS` seat: it answers along `accountable_to` to the nearest HOAC above it, and the seat is that HOAC's, a human position (Standard §4.1, §4.2, item 6). Who holds it is never written here: it is the organisation's own mechanism, outside the system (DR-0049).
 
-| Position (standard title) | Purpose | Reports to | Run today by | Deputy |
-|---|---|---|---|---|
-| | | | an agent / a human occupant (recorded only in top management's own register) | |
+| Position (standard title) | Purpose | Reports to | Run today by |
+|---|---|---|---|
+| | | | an AI agent / a human position |
 
-"Run today by" records only whether an agent or a human occupant runs the position; the occupant is recorded only in top management's own register, outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
+"Run today by" records only whether an AI agent or a human position runs it; who holds a human position is the organisation's own mechanism, outside the system and outside the Blueprint. A deputy of a human position is the organisation's own too (DR-0049). Two positions are two parties, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
 
 Each position's role pack (job description, responsibilities, limits, permissions, checklists, KPIs, coverage, handover, first week) is carried in the role cards of the capabilities it performs.
 
@@ -359,7 +359,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Dispute exit: rounds before the exit, and the classes that go to the human | | 2 rounds; none: classes must be set | | | | |
 | Stale work: finish window, drop age, cap on work in flight | | none: must be set | | | | |
 | Planned halt: grace time and resume order | | 10 minutes; order must be set | | | | |
-| Signature referral time for personal signatures | | 15 minutes | | | | |
+| Waiting time for a personal signature before its hold is raised (Protocol §4.6, item 7) | | 15 minutes | | | | |
 | Seat load weights and the load line (load and coverage per position only; Standard §4.1, item 13); days before a critical seat is raised again | | 2 for a seat answering for a unit, 1 for a signing or on-call seat, 0.5 otherwise; line 4; 7 days | | | | |
 | Spend: soft-hold fraction, protected classes of work, degradation order | | 80%; none: classes must be set | | | | |
 | Capability tiers, tier floor per sensitivity class, engine re-score schedule | | none: must be set | | | | |
@@ -367,7 +367,7 @@ What the `[ORG]HOAC-ACS` seat is asked to decide. Money, people and legal matter
 | Duty deputy: ruling life and weekly sample size | | 90 days; 10 | | | | |
 | Quiet windows: share of lower-stakes decisions | | none: must be set | | | | |
 
-A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
+A load line on the people behind positions, if any, is the organisation's own mechanism and record, outside the system, and is never set in a Blueprint (Standard §1.1, item 10; DR-0049).
 
 ---
 
@@ -384,12 +384,12 @@ The parts inside this AIOC (`docs/CELLS-AND-PODS.md`). One card per Cell and per
 
 | Code | Kind | Type | Filler kind | HOAC label | Parent | Attached to | Fixed test (owner) | External ports |
 |---|---|---|---|---|---|---|---|---|
-| `<[ORG]CELL-INITIALS>` | CELL | `<from the organisation's list>` | `<human / ai / human-or-ai>` | `<none / [ORG]HOAC-...>` | `<code>` | `<person's Cell, for an AI assistant>` | `<test ID and version (seat)>` | `<none / service and direction>` |
+| `<[ORG]CELL-INITIALS>` | CELL | `<from the organisation's list>` | `<human / ai / human-or-ai>` | `<none / [ORG]HOAC-...>` | `<code>` | `<the served position's Cell, for an AI assistant>` | `<test ID and version (seat)>` | `<none / service and direction>` |
 | `<[ORG]POD-INITIALS>` | POD | `<from the organisation's list>` | — | `<none / [ORG]HOAC-...>` | `<code>` | — | `<test ID and version (seat)>` | — |
 
-**Position codes only (GOV, 15 October 2026).** Every field of a card that points to a human (`accountable_to`, `label_holder`, `attached_to`, a signer's seat, a fixed test's seat) takes a position code only, in the form `<[ORG]CELL-INITIALS>`, `<[ORG]POD-INITIALS>` or `<[ORG]AIOC-INITIALS>`, never a person's name, initials of a person or internal person ID. Who holds a position is kept only in the organisation's private register copy (Standard §5.2, Position Principle).
+**Position codes only (GOV, 15 October 2026).** Every field of a card that points to a human (`accountable_to`, `label_holder`, `attached_to`, a signer's seat, a fixed test's seat) takes a position code only, in the form `<[ORG]CELL-INITIALS>`, `<[ORG]POD-INITIALS>` or `<[ORG]AIOC-INITIALS>`, never a person's name, initials of a person or internal person ID. Who holds a position is the organisation's own mechanism, outside the system (Standard §5.2, Position Principle; DR-0049).
 
-**Complete card forms.** The blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names its person's Cell in `attached_to`.
+**Complete card forms.** The blocks below carry every key the unit card schema requires and are the ones a Blueprint fills. A HOAC label sits only on a Cell whose filler kind is human (Standard §4.1, item 11). An attached AI Cell sits in this Blueprint, has this AIOC (or its Pod) as `parent`, and names the served position's Cell in `attached_to`.
 
 ```yaml
 cell:
@@ -400,7 +400,7 @@ cell:
   accountable_to: "<code of the human Cell carrying a HOAC label that this Cell answers to>"
   # hoac: "<[ORG]HOAC-ACS | [ORG]HOAC-TM | [ORG]HOAC-GOV>"   # only on a Cell whose filler_kind is human; omit if none
   # authority_scope: { decision_types: ["<listed type>"], expires: "<YYYY-MM-DD>", authority: "<constituted | delegated>" }   # every Cell carrying a HOAC label (Standard §4.4, item 8)
-  # attached_to: "<code of the person's Cell>"   # only for an attached AI Cell; omit otherwise
+  # attached_to: "<code of the served position's Cell>"   # only for an attached AI Cell; omit otherwise
   type: "<from the organisation's list>"
   filler_kind: "<human | ai | human-or-ai>"
   card_version: "<vN.N.N>"
@@ -416,7 +416,7 @@ cell:
     - { unit: "<code>", port: "stop", direction: "input", type: "HU", identification: "live-human-sign-in-at-gateway", accepted_content: ["stop"], authority_limit: "stop only", audit_trail: "<where recorded>", required_tests: ["<test ID and version>"], enforcement: "shared-gateway-outside-unit", stop_door: true }
 ```
 
-A Pod example (a Pod holds Cells only; a Pod with a HOAC label names its `label_holder`, or a `decision_rule` when it decides together):
+A Pod example (a Pod holds Cells only; a Pod with a HOAC label names its `label_holder`; a board behind a position is the organisation's own, DR-0049):
 
 ```yaml
 pod:
@@ -480,18 +480,18 @@ Sources: DR-0019.
 |---|---|
 | Name | plain English |
 | Position and seat | the position; its accountable `[ORG]HOAC-ACS` seat |
-| Performed by | a bot, an agent or a human position; a human occupant is recorded only in top management's own register |
+| Performed by | a bot, an agent or a human position; who holds a human position is the organisation's own mechanism, outside the system |
 | Purpose | one line |
 | Authority limits | alone / needs the owner / never — mirroring the panel switch |
 | Write location | the single place it writes |
 | Reports to | normally the Chief of Staff; the owner directly only in a board session |
 | Escalation | where and how |
 | Tools and access | which, through the panel; never credentials in instructions |
-| Deputy and cover | who acts when it cannot |
+| Cover | for an AI role, what takes over when it cannot; for a human position, nothing: its cover is the organisation's own mechanism |
 | Fixed test and score | the test ID |
 | Card version and status | — |
 
-A role card never counts or compares the persons behind positions: two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
+A role card never counts or compares the persons behind positions: two positions are two parties, even when one natural person holds both (Standard §1.1, item 10).
 
 ### A.4 Fixed test — must contain
 | Field | Content |
@@ -533,5 +533,56 @@ The wording below left the body of this text when it was written clean at `v2.0.
     attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
     fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
   ```
+
+**`v2.1.0` (DR-0049).** The wording below left the body when this text was brought into line with the complete definition `v2.1.0` (DR-0048): every place in the system is an AIOC or a HOAC position, and the mechanism behind a position is the organisation's own.
+
+- **How to fill it, item 6** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  6. Write positions, never people. A person's name appears only in the holders register.
+- **§0, Accountable seat** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  | Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
+  ```
+- **§1 card block, the hoac comment** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  # omit if none; with it, label_holder or decision_rule
+  ```
+- **§3, opening** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  the seat is that HOAC's, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
+- **§3, the positions table** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  | Position (standard title) | Purpose | Reports to | Run today by | Deputy |
+  |---|---|---|---|---|
+  | | | | an agent / a human occupant (recorded only in top management's own register) | |
+  ```
+- **§3, Run today by** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  "Run today by" records only whether an agent or a human occupant runs the position; the occupant is recorded only in top management's own register, outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
+- **§15, the referral row** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  | Signature referral time for personal signatures | | 15 minutes |
+  ```
+- **§15, the load line** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
+- **§17 table, attached_to** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  `<person's Cell, for an AI assistant>`
+- **§17, Position codes only** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  Who holds a position is kept only in the organisation's private register copy (Standard §5.2, Position Principle).
+- **§17, Complete card forms, attached Cells** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  and names its person's Cell in `attached_to`.
+- **§17 Cell block, the attached_to comment** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  # attached_to: "<code of the person's Cell>"   # only for an attached AI Cell; omit otherwise
+  ```
+- **§17, the Pod example** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  A Pod example (a Pod holds Cells only; a Pod with a HOAC label names its `label_holder`, or a `decision_rule` when it decides together):
+- **Annex A.3, Performed by** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  | Performed by | a bot, an agent or a human position; a human occupant is recorded only in top management's own register |
+  ```
+- **Annex A.3, Deputy and cover** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  ```text
+  | Deputy and cover | who acts when it cannot |
+  ```
+- **Annex A.3, the closing line** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
+  two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
 
 *49GAION AIOC Blueprint Template v2.0.0 · Powered by 49GAION*
