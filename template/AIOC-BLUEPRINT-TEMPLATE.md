@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v2.0.0"
+    version: "v2.1.0"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v2.0.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v2.1.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2). Where this template names `[ORG]AIOC-OCO`, it means the hub of the operation: the Top Management Group, or a separate `[ORG]AIOC-OCO` where the organisation has one. The Panel is the organisation's own interface, written in code; the Back office, the AI chat workspace, keeps it.
 >
@@ -585,4 +585,4 @@ The wording below left the body of this text when it was written clean at `v2.0.
 - **Annex A.3, the closing line** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
   two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
 
-*49GAION AIOC Blueprint Template v2.0.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v2.1.0 · Powered by 49GAION*
