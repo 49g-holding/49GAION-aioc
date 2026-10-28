@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
-"""position-fields, arrangement structure (GOV 15 October 2026; non-required at first).
-Structure only; no model name is hard-coded. Positions that exist ("known") are the HOAC labels
-[ORG]HOAC-GOV, [ORG]HOAC-TM and [ORG]HOAC-ACS plus every position declared in a tracked YAML or
-JSON file (an object {"entry": "position", "position": CODE} or {"position": {"code": CODE}}).
-The files checked are, on a pull request (BASE_SHA set), those it adds or changes; otherwise
-every tracked file. Wherever a checked file has:
-- an "arrangement" object: it names its "position"; its holder count ("holders": a number or a
-  list) is at least 1; with more than one holder it records a non-empty "signing_rule";
-- an "overseen" link in an arrangement: it is an object naming a known overseeing position
-  ("by") and a timing form ("timing": pre or post); an arrangement for GOV (code ending in
-  HOAC-GOV) with an overseen link is rejected, since every other position is lower;
-- a "decision_stamp" object (an instance or a schema with "properties"): it carries the field
-  "accountable_member". Whether that member is a current occupant is checked by the tool
-  gateway at signing, not here.
-A YAML or JSON file that cannot be parsed is an error; a missing PyYAML is an error.
+"""position-fields, the Overseen link (GOV 15 October 2026; DR-0049, 28 October 2026).
+Structure only. Since DR-0049 who holds a position, how many hold it and how they decide among
+themselves are the organisation's own mechanism, outside the system: this check no longer asks for
+a holder count, a signing rule or an accountable member, and never reads a person. It checks only
+the Overseen link, which stays as a link between positions.
+Positions that exist ("known") are the HOAC labels [ORG]HOAC-GOV, [ORG]HOAC-TM and [ORG]HOAC-ACS
+plus every position declared in a tracked YAML or JSON file (an object {"entry": "position",
+"position": CODE} or {"position": {"code": CODE}}). The files checked are, on a pull request
+(BASE_SHA set), those it adds or changes; otherwise every tracked file. Wherever a checked file
+has an "overseen" link (on its own, or inside a legacy "arrangement" object), it must be an object
+naming a known overseeing position ("by") and a timing form ("timing": pre or post); a GOV
+position (code ending in HOAC-GOV) that is overseen is rejected, since every other position is
+lower. A YAML or JSON file that cannot be parsed is an error; a missing PyYAML is an error.
 Self-test: .github/tests/arrangements_selftest.sh."""
 import json, os, subprocess, sys
 try:
@@ -61,26 +59,14 @@ for f in check:
     if f in cache and cache[f] is None: continue
     for d in load(f, True):
         for o in walk(d):
-            a = o.get("arrangement")
-            if isinstance(a, dict):
-                pos = a.get("position", o.get("position"))
+            if "overseen" not in o: continue
+            for pos, ov in [(o.get("position", o.get("code")), o.get("overseen"))]:
                 if isinstance(pos, dict): pos = pos.get("code")
-                if not isinstance(pos, str) or not pos: err(f, "arrangement must name its position")
-                h = a.get("holders")
-                n = len(h) if isinstance(h, list) else h if isinstance(h, int) and not isinstance(h, bool) else None
-                if n is None or n < 1: err(f, f"arrangement for {pos}: holder count must be at least 1")
-                elif n > 1 and not str(a.get("signing_rule") or "").strip(): err(f, f"arrangement for {pos}: more than one holder needs a recorded signing_rule")
-                ov = a.get("overseen")
-                if ov is not None and not isinstance(ov, dict):
-                    err(f, f"arrangement for {pos}: overseen must be an object")
-                elif isinstance(ov, dict):
-                    if ov.get("by") not in known: err(f, f"arrangement for {pos}: overseeing position {ov.get('by')!r} is not a defined position")
-                    if ov.get("timing") not in ("pre", "post"): err(f, f"arrangement for {pos}: overseen needs timing pre or post")
-                    if isinstance(pos, str) and pos.endswith("HOAC-GOV"): err(f, "GOV overseen by a lower position is rejected (no loops)")
-            s = o.get("decision_stamp")
-            if isinstance(s, dict):
-                fields = s["properties"] if isinstance(s.get("properties"), dict) else s
-                if "accountable_member" not in fields: err(f, "decision_stamp lacks the accountable_member field")
+                if not isinstance(ov, dict):
+                    err(f, f"overseen link of {pos}: it must be an object"); continue
+                if ov.get("by") not in known: err(f, f"overseen link of {pos}: overseeing position {ov.get('by')!r} is not a defined position")
+                if ov.get("timing") not in ("pre", "post"): err(f, f"overseen link of {pos}: timing must be pre or post")
+                if isinstance(pos, str) and pos.endswith("HOAC-GOV"): err(f, "GOV overseen by a lower position is rejected (no loops)")
 if bad:
-    print(f"::error::{bad} arrangement structure problem(s)."); sys.exit(1)
-print(f"position-fields: arrangement structure is complete ({len(check)} file(s) checked, {len(known)} known positions).")
+    print(f"::error::{bad} Overseen link problem(s)."); sys.exit(1)
+print(f"position-fields: every Overseen link is well formed ({len(check)} file(s) checked, {len(known)} known positions).")
