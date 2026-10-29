@@ -3,6 +3,7 @@
 # Protocol, read at a fixed commit: the SHA in the file PROTOCOL-PIN at the repository root when
 # present, otherwise DEFAULT_PIN below (protocol main at the time of this check). A content
 # change that moves to a new protocol version moves the pin in the same change.
+# The pin must be the commit of a release tag of 49GAION-protocol (49GAION/DR-0051).
 # Known warnings: the list .github/template-fill.known.tsv as it stands on the BASE commit (a
 # pull request's own copy is never read). A finding on that list is a warning; any other finding
 # fails. When the base has no list, the findings of the base commit's template are the known set.
@@ -33,7 +34,11 @@ jobs:
           PIN=$DEFAULT_PIN
           if [ -f PROTOCOL-PIN ]; then PIN=$(tr -d ' \n\r' < PROTOCOL-PIN); fi
           if ! printf '%s' "$PIN" | grep -Eq '^[0-9a-f]{40}$'; then echo "::error::TEMPLATE-FILL-PIN: PROTOCOL-PIN must hold one full commit SHA"; exit 1; fi
-          echo "49GAION-protocol at $PIN"
+          # The pin names a released Protocol: the commit of a tag v<major>.<minor>.<patch> (49GAION/DR-0051).
+          TAGS=$(git ls-remote --tags https://github.com/49g-holding/49GAION-protocol.git 'refs/tags/v*') || { echo "::error::PIN-UNREADABLE: the tags of 49GAION-protocol cannot be read; failing closed."; exit 1; }
+          TAG=$(printf '%s\n' "$TAGS" | awk -v p="$PIN" '$1 == p && $2 ~ /^refs\/tags\/v[0-9]+\.[0-9]+\.[0-9]+(\^\{\})?$/ {sub(/^refs\/tags\//, "", $2); sub(/\^\{\}$/, "", $2); print $2; exit}')
+          if [ -z "$TAG" ]; then echo "::error::PIN-UNTAGGED: PROTOCOL-PIN $PIN is not the commit of a release tag of 49GAION-protocol. Pin a released version."; exit 1; fi
+          echo "49GAION-protocol at $PIN ($TAG)"
           git init -q .deps/protocol
           git -C .deps/protocol fetch -q --depth 1 https://github.com/49g-holding/49GAION-protocol.git "$PIN"
           git -C .deps/protocol checkout -q FETCH_HEAD
