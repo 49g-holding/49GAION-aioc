@@ -8,6 +8,6 @@
 
 **`v2.1.0` brings the template and the definition texts into line with the complete definition `v2.1.0`** (`49GAION/DR-0048`, `DR-0049`): only AIOCs and HOAC positions; who holds a position, and how, is the organisation's own mechanism, outside the system. The texts stay written clean, as from `v2.0.0` (`49GAION/DR-0047`): they state their current meaning in their body, and the wording they superseded is listed at the end of each text and kept at the earlier tags.
 
-**Since `v2.2.0`, on `main`, unreleased:** none.
+**Since `v2.2.0`, on `main`, unreleased:** `PROTOCOL-PIN` names the Operating Protocol's release `v2.2.0` (`afc91b6`), now tagged; the filled template validates against its unit card schema. It ships with the next release.
 
 Powered by 49GAION
