@@ -1,6 +1,6 @@
 # What an AIOC is
 
-**Version `v2.1.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
+**Version `v2.1.1` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
 
 ## 1. Definition
 
@@ -54,7 +54,7 @@ Sources: DR-0041.
 2. The seat's requests go to OCO. Where they disagree, OCO does not decide: the seat may hold the objection open until it reaches the HOAC seat accountable for OCO, which decides (Standard §4.2, item 7).
 3. A change to an AI's authority (capacity, skills, bots, access, budget) is decided by the `[ORG]HOAC-ACS` seat; OCO prepares, checks and carries it out.
 4. **Two relations (v1.5.0).** An AIOC's card names its `parent` (the AIOC whose Blueprint lists it, or none for the Charter) and its `accountable_to` (the human Cell carrying a HOAC label to which it answers); every rule on accountability follows `accountable_to` (Standard §1.7). Its `top_cell` gives its lead; its Type gives why it exists.
-5. **Human-led AIOC (v1.5.0).** An AIOC whose top Cell is human may set its Chief of Staff Cell to human-or-ai. Whatever the filler, a Chief of Staff never signs for the position it serves (DR-0049). The Charter is installed and changed only on GOV's signature; any other AIOC carrying a GOV or TM label, on GOV or TM signature; neither by OCO alone (Standard §1.7 and §5.1).
+5. **Human-led AIOC (v1.5.0).** An AIOC whose top Cell is human may set its Chief of Staff Cell to human-or-ai. Whatever the filler, a Chief of Staff signs for the position it serves only within the grant that position has given it, and never a type of the Human Floor signature list (`49GAION/DR-0051`). The Charter is installed and changed only on GOV's signature; any other AIOC carrying a GOV or TM label, on GOV or TM signature; neither by OCO alone (Standard §1.7 and §5.1).
 
 ## 6. Runtime
 
@@ -131,3 +131,9 @@ The wording below left the body of this text when it was written clean at `v2.0.
 
 - **§5 item 5, the Chief of Staff** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
   Whatever the filler, a Chief of Staff never signs for its person.
+
+**`v2.1.1` (`49GAION/DR-0051`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
+
+- **Human-led AIOC, the signature** · superseded by `49GAION/DR-0051`, item 2 (a Chief of Staff signs only within its position's grant):
+  Whatever the filler, a Chief of Staff never signs for the position it serves (DR-0049).
+

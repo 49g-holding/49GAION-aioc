@@ -1,6 +1,6 @@
 # Cells and Pods
 
-**Version `v2.1.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
+**Version `v2.1.1` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
 
 The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside an AIOC, its Blueprint holds two kinds of part: Cells and Pods.
 
@@ -15,7 +15,7 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 6. **A position's AI assistants (DR-0049).** The AI assistants of a human position are separate registered AI Cells, each with its own code, attached to that position's Cell (`attached_to` on the card). They are never unnamed.
 7. **Fixed test.** Every Cell has a fixed test, owned by its seat. An AI filler gains access only after passing it, and a human position's access opens while the organisation's mechanism has a credential in force for it (Standard §4.4, item 4); work moves from human to AI, or from one version to the next, only by passing it, and moves back if the score drops.
 8. **HOAC label.** A Cell may carry a HOAC (Human Oversight & Accountability Control) label, `[ORG]HOAC-GOV`, `[ORG]HOAC-TM` or `[ORG]HOAC-ACS`, as a field of its card. A human seat that carries the label is accountable for the part it sits on and everything under it.
-9. **Attached Cells (v1.5.0; DR-0049).** An attached AI Cell sits in the same Blueprint as the Cell it serves, has the same parent as that Cell and names the Cell of the position it serves in `attached_to`. It serves that seat only. When its own filler changes, its memory of the previous filler is sealed. Whatever its filler, an attached Cell, including a Chief of Staff, never signs for the position it serves (Protocol §4.10).
+9. **Attached Cells (v1.5.0; DR-0049).** An attached AI Cell sits in the same Blueprint as the Cell it serves, has the same parent as that Cell and names the Cell of the position it serves in `attached_to`. It serves that seat only. When its own filler changes, its memory of the previous filler is sealed. Whatever its filler, an attached Cell, including a Chief of Staff, signs for the position it serves only within the grant that position has given it, and never a type of the Human Floor signature list (Standard §4.4, item 8; Protocol §4.10, items 6 and 7; `49GAION/DR-0051`).
 10. **Two relations (v1.5.0).** `parent` names only the AIOC or Pod whose Blueprint holds the Cell's card; `accountable_to` names the human Cell carrying a HOAC label to which the Cell answers. A Cell is never a parent; nothing sits inside a Cell (Standard §1.7).
 11. **A label on a human seat (v1.5.0).** A HOAC label sits only on a Cell whose filler kind is human. If that seat is empty or filled by an AI, the label's powers are held (Standard §4.1).
 12. **Sensitivity class and two thresholds (GOV, 14 October 2026).**
@@ -49,7 +49,7 @@ The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside a
 
 The role and nature of a Pod or an AIOC are read from the type of its top Cell. There is no rule that every AIOC must contain a given kind of Cell or Pod.
 
-**Top Cell (v1.5.0).** The card's `top_cell` names exactly one Cell whose parent is that part. Co-leadership is a Pod with a decision rule. The top Cell gives the part's lead; the AIOC Type gives why it exists (Standard §1.7).
+**Top Cell (v1.5.0).** The card's `top_cell` names exactly one Cell whose parent is that part. A HOAC label is held by one position, its `label_holder`; a rule that needs several signers names its signing positions (Standard §4.1, item 10). The top Cell gives the part's lead; the AIOC Type gives why it exists (Standard §1.7).
 
 **Assignment (GOV, 14 October 2026).** Besides `parent` and `accountable_to`, a Cell or a Pod may carry dated `assignments` to programmes or engagements it serves. An assignment carries no authority and opens no access; a title names the role, never the assignment (Standard §1.7).
 
@@ -89,5 +89,13 @@ The wording below left the body of this text. Each entry names what superseded i
   **Label holder or decision rule (v1.5.0).** A Pod with a HOAC label names its `label_holder`, one human Cell in it, or, when it decides together, a `decision_rule`: member Cells, quorum, majority, chair and casting vote. Each member signs under their own Cell; one person holding two seats in the same body counts once (Standard §4.1).
   - **Reading note (GOV, 15 October 2026).** Two positions are two parties, even when one natural person occupies both (Standard §1.1, item 10). "One person holding two seats in the same body counts once" reads "each member Cell is its own party and counts once"; no AI part or check compares the persons behind member Cells.
   ```
+
+**`v2.1.1` (`49GAION/DR-0051`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
+
+- **§1 item 9 (Attached Cells), the signature** · superseded by `49GAION/DR-0051`, item 2 (a Chief of Staff signs only within its position's grant):
+  Whatever its filler, an attached Cell, including a Chief of Staff, never signs for the position it serves (Protocol §4.10).
+- **Top Cell** · superseded by `49GAION/DR-0051` (a correction to the complete definition; no new rule): a label is held by one position (`49GAION/DR-0049`):
+  Co-leadership is a Pod with a decision rule.
+
 
 Powered by 49GAION

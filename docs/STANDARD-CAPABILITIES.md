@@ -1,6 +1,6 @@
 # The standard capabilities of every AIOC
 
-**Version `v2.1.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
+**Version `v2.1.1` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
 
 ## 4.1 Office
 
@@ -38,7 +38,7 @@ Each unit has one input and one output of each kind (AI and HU), plus the stop d
 5. Incoming work: hand each arrival to the Input socket; if it passes, assign it inside the AIOC.
 6. Never close a Work Item its own AIOC performed; for items it requested, run its acceptance test on the evidence.
 
-**Position Chief of Staff (DR-0010; DR-0049).** Every position that carries a HOAC label has its own Chief of Staff of the connecting kind (a Cell, an Office, or an AIOC, as in DR-0007), attached to that position's Cell. It receives, analyses, sorts and simplifies what the AIOCs bring to the position; manages on the position's behalf only within authority the position has delegated to it (Standard §5.2, delegation ladder); advises and proposes where it holds no authority; and carries out the position's routine actions as its executive assistant. It acts only through the tool gateway with its own credential, within the delegated scope, and every action it takes for the position is logged; types in upstream/human-floor-signature-types.json stay with the position. It never signs for the position, and the position's HU ports and stop door never pass through it (Standard §4.4, item 6; Protocol §4.10, item 6).
+**Position Chief of Staff (DR-0010; DR-0049).** Every position that carries a HOAC label has its own Chief of Staff of the connecting kind (a Cell, an Office, or an AIOC, as in DR-0007), attached to that position's Cell. It receives, analyses, sorts and simplifies what the AIOCs bring to the position; manages on the position's behalf only within authority the position has delegated to it (Standard §5.2, delegation ladder); advises and proposes where it holds no authority; and carries out the position's routine actions as its executive assistant. Each position sets up its own Chief of Staff and may grant it authority up to the right to sign for it. It acts only through the tool gateway with its own credential, within that grant, and every action it takes for the position is logged; where the grant includes signing, it signs for the position within that grant, each signature tagged as a delegated act, and a standing grant covers only acts that can be undone and do not widen access, budget or authority (Standard §5.2; `49GAION/DR-0051`). Types in upstream/human-floor-signature-types.json stay with the position and need the position's own human signature. The position's HU ports and stop door never pass through it (Standard §4.4, item 6; Protocol §4.10, item 6).
 
 **Position Principle (GOV, 15 October 2026).** A HOAC seat that a Chief of Staff serves is a position, never a person (Standard §5.2). The Chief of Staff serves the position: it names the seat by position code only, and everything the position carries, including open work, commitments and the delegation ladder in force, stays with the position whoever holds it. Who held the seat when is the organisation's own record, outside the system (DR-0049).
 
@@ -50,7 +50,7 @@ Each unit has one input and one output of each kind (AI and HU), plus the stop d
 - only prepares;
 - never handles it.
 
-Each delegated act is tagged as done for the seat, shown, reversible in one action, and summarised in a return brief. The level is read from the act itself, never from what the Chief of Staff cites. Outside commitments, its own limits, matters about people, speaking as the human and every listed type are never delegated (Standard §5.2).
+Each delegated act is tagged as done for the seat, shown, reversible in one action, and summarised in a return brief. The level is read from the act itself, never from what the Chief of Staff cites. Outside commitments, its own limits, matters about people, speaking as the human and every listed type are never delegated through the ladder; the right to sign for the position comes only from the position's own grant, and never for a listed type (Standard §5.2).
 
 **Completed staff work.** A *decide* item arrives as a decision request (Protocol §4.7) holding:
 - one recommendation;
@@ -115,7 +115,7 @@ Sources: GOV, 14 October 2026.
 - **State snapshot.** On every change the Panel shows one human-readable and one machine-readable snapshot generated from the registers, with one line in the HOAC seat's own words, and never a personal name or contact.
 - **Health.** The Health section shows every check as ok, finding or unknown, never unknown as a pass, and shows each watcher's pulse.
 
-**Process.** A change is a tested change to the blueprint, reviewed by someone other than the writer; the Panel and Back office are rebuilt from it; the running Panel shows the version it was built from.
+**Process.** A change is a tested change to the blueprint, reviewed by a party other than the writer; the Panel and Back office are rebuilt from it; the running Panel shows the version it was built from.
 
 **Role card · Panel.** Name; position and HOAC seat; purpose (the AIOC's face, built from its blueprint); authority limits (changes only from an approved blueprint version); write location (the generated panel profile and release records); reports to (OCO); fixed test and score; card version.
 
@@ -146,3 +146,12 @@ The wording below left the body of this text when it was written clean at `v2.0.
   Each delegated act is tagged ("acting" while the seat is away), shown,
 - **§4.2, the veto** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
   the Chief of Staff raises it again only if the seat or its acting filler (Standard §4.1, item 12) reopens it,
+
+**`v2.1.1` (`49GAION/DR-0051`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
+
+- **Position Chief of Staff, its acts and the signature** · superseded by `49GAION/DR-0051`, item 2 (a Chief of Staff signs only within its position's grant):
+  It acts only through the tool gateway with its own credential, within the delegated scope, and every action it takes for the position is logged; types in upstream/human-floor-signature-types.json stay with the position. It never signs for the position, and the position's HU ports and stop door never pass through it
+- **Delegation ladder** · superseded by `49GAION/DR-0051`, item 2 (a Chief of Staff signs only within its position's grant):
+  Outside commitments, its own limits, matters about people, speaking as the human and every listed type are never delegated (Standard §5.2).
+- **Process, review** · superseded by `49GAION/DR-0051` ("a party other than", as the complete definition now says):
+  A change is a tested change to the blueprint, reviewed by someone other than the writer;
