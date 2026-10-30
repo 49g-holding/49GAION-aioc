@@ -11,7 +11,7 @@ blueprint:
   status: "<draft | in force | replaced>"
   template:
     name: "49GAION AIOC Blueprint Template"
-    version: "v2.1.0"
+    version: "v2.1.1"
     source: "github.com/49g-holding/49GAION-aioc, template/AIOC-BLUEPRINT-TEMPLATE.md @ <commit>"
   mother:
     name: "<Library blueprint name>, or none yet"
@@ -27,7 +27,7 @@ blueprint:
 
 # Blueprint · `<[ORG]AIOC-INITIALS>` · `<Full name>` · `<blueprint version>`
 
-**The 49GAION AIOC Blueprint Template, `v2.1.0`.** Blank: every field is a placeholder; it holds no AIOC's content.
+**The 49GAION AIOC Blueprint Template, `v2.1.1`.** Blank: every field is a placeholder; it holds no AIOC's content.
 
 > **What this file is.** This is the one git file that defines an AIOC. It is its blueprint and its panel definition. It lists **every capability** the AIOC has, and each capability is written in **four parts: Definition, Process (SOP), Role card, Fixed test**. The AIOC's Panel and its Back office are both **built from this one file**. A change to the AIOC is a **tested git commit** to this file; the Panel then rebuilds from that commit, so the blueprint never drifts from what runs (`docs/WHAT-IS-AN-AIOC.md` §2). Where this template names `[ORG]AIOC-OCO`, it means the hub of the operation: the Top Management Group, or a separate `[ORG]AIOC-OCO` where the organisation has one. The Panel is the organisation's own interface, written in code; the Back office, the AI chat workspace, keeps it.
 >
@@ -474,7 +474,6 @@ Sources: DR-0019.
 | Cadence | daily / weekly / monthly / quarterly, if any |
 | Measures | name — definition — target (no target invented) |
 
-
 ### A.3 Role card — must contain
 | Field | Content |
 |---|---|
@@ -517,72 +516,4 @@ Every bot performing a role card has one identity card.
 
 Schema: `49GAION-protocol` `spec/schemas/bot-identity-card.schema.json`.
 
-## Superseded wording, by version
-
-The wording below left the body of this text when it was written clean at `v2.0.0`. Each entry names what superseded it. Nothing is lost: the layered texts up to `v1.8.0` are kept at their tags.
-
-- **§17 Cells and Pods, the short Cell card form (original lines 386-398)** · superseded by v1.5.0, the complete card forms of §17:
-  ```text
-  cell:
-    unit_kind: "CELL"
-    code: "<[ORG]CELL-INITIALS>"
-    parent: "<code of this AIOC or of its Pod>"
-    type: "<from the organisation's list>"
-    filler_kind: "<human | ai | human-or-ai>"
-    hoac: "<[ORG]HOAC-GOV | [ORG]HOAC-TM | [ORG]HOAC-ACS>"   # omit if none
-    attached_to: "<code of the person's Cell>"              # only for a person's AI assistant
-    fixed_test: { id: "<test ID>", version: "<vN>", owner: "<code of the seat>" }
-  ```
-
-**`v2.1.0` (DR-0049).** The wording below left the body when this text was brought into line with the complete definition `v2.1.0` (DR-0048): every place in the system is an AIOC or a HOAC position, and the mechanism behind a position is the organisation's own.
-
-- **How to fill it, item 6** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  6. Write positions, never people. A person's name appears only in the holders register.
-- **§0, Accountable seat** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  | Accountable seat (`[ORG]HOAC-ACS`) | the seat (holder in the unit register only) |
-  ```
-- **§1 card block, the hoac comment** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  # omit if none; with it, label_holder or decision_rule
-  ```
-- **§3, opening** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  the seat is that HOAC's, held by a human (Standard §4.1, §4.2, item 6). Holders are never named here.
-- **§3, the positions table** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  | Position (standard title) | Purpose | Reports to | Run today by | Deputy |
-  |---|---|---|---|---|
-  | | | | an agent / a human occupant (recorded only in top management's own register) | |
-  ```
-- **§3, Run today by** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  "Run today by" records only whether an agent or a human occupant runs the position; the occupant is recorded only in top management's own register, outside the Blueprint. Two positions are two parties, even when one occupant runs both, and the Blueprint never counts or compares the persons behind positions (Standard §1.1, item 10).
-- **§15, the referral row** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  | Signature referral time for personal signatures | | 15 minutes |
-  ```
-- **§15, the load line** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  A load line on the people behind positions, if any, is top management's own mechanism and record and is never set in a Blueprint (Standard §1.1, item 10).
-- **§17 table, attached_to** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  `<person's Cell, for an AI assistant>`
-- **§17, Position codes only** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  Who holds a position is kept only in the organisation's private register copy (Standard §5.2, Position Principle).
-- **§17, Complete card forms, attached Cells** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  and names its person's Cell in `attached_to`.
-- **§17 Cell block, the attached_to comment** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  # attached_to: "<code of the person's Cell>"   # only for an attached AI Cell; omit otherwise
-  ```
-- **§17, the Pod example** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  A Pod example (a Pod holds Cells only; a Pod with a HOAC label names its `label_holder`, or a `decision_rule` when it decides together):
-- **Annex A.3, Performed by** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  | Performed by | a bot, an agent or a human position; a human occupant is recorded only in top management's own register |
-  ```
-- **Annex A.3, Deputy and cover** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  | Deputy and cover | who acts when it cannot |
-  ```
-- **Annex A.3, the closing line** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  two positions are two parties, even when one occupant holds both (Standard §1.1, item 10).
-
-*49GAION AIOC Blueprint Template v2.1.0 · Powered by 49GAION*
+*49GAION AIOC Blueprint Template v2.1.1 · Powered by 49GAION*
