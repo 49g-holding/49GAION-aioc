@@ -1,6 +1,6 @@
 # The standard capabilities of every AIOC
 
-**Version `v2.2.0` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
+**Version `v2.2.1` · approved by the governing seat (GOV) of 49GAION.** Every AIOC has four standard capabilities: **Chief of Staff, Office (where a position needs more than one Chief of Staff), Input socket, Panel**. This file gives their default definition, each in four parts: Definition, Process, Role card, Fixed test. An AIOC's blueprint adopts these defaults by reference and records only where it differs (template §11).
 
 ## 4.1 Office
 
@@ -123,42 +123,3 @@ Sources: GOV, 14 October 2026.
 
 Sources: DR-0041; GOV, 14 October 2026.
 
-## Superseded wording, by version
-
-The wording below left the body of this text when it was written clean at `v2.0.0`. Each entry names what superseded it. Nothing is lost: the layered texts up to `v1.8.0` are kept at their tags.
-
-- **§4.4 Definition, first sentence** · superseded by DR-0041 (reading), v2.0.0:
-  The AIOC's operating face and the only surface humans use, built only from the AIOC's blueprint.
-- **§4.4 Definition, exceptions bullet** · superseded by DR-0041 (reading), v2.0.0:
-  **The only surface, with three exceptions (v1.5.0):** except the stop door, signature prompts and the accountability path, which the Panel only links to (Standard §6.1, item 6).
-- **§4.4 Definition, OCO bullet** · superseded by DR-0041 (reading), v2.0.0:
-  The Panel is built, customised and maintained by `[ORG]AIOC-OCO`; any AIOC request about the Panel goes to OCO (Standard §5.3).
-
-**`v2.1.0` (DR-0049).** The wording below left the body when this text was brought into line with the complete definition `v2.1.0` (DR-0048): every place in the system is an AIOC or a HOAC position, and the mechanism behind a position is the organisation's own.
-
-- **§4.2, Holder Chief of Staff** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **Holder Chief of Staff (DR-0010).** Every holder of a HOAC label has its own Chief of Staff of the connecting kind (a Cell, an Office, or an AIOC, as in DR-0007), attached to the holder's Cell. It receives, analyses, sorts and simplifies what the AIOCs bring to the holder; manages on the holder's behalf only within authority the holder has delegated to it (Standard §5.2, delegation ladder); advises and proposes where it holds no authority; and carries out the holder's routine actions as its executive assistant. It acts only through the tool gateway with its own credential, within the delegated scope, and every action it takes for the holder is logged; types in upstream/human-floor-signature-types.json stay with the holder. It never signs for the holder, and the holder's HU ports and stop door never pass through it (Standard §4.4, item 6; Protocol §4.10, item 6).
-- **§4.2, Position Principle** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  The Chief of Staff serves the position: it names the seat by position code only, and when the occupant changes, everything the position carries, including open work, commitments and the delegation ladder in force, passes in full to the new occupant. Who held the seat when stays as history in the private register copy.
-- **§4.2, Arrangement of the seat** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **Arrangement of the seat (GOV, 15 October 2026).** The seat a Chief of Staff serves is held under one of three arrangement models (Standard §5.2): Solo (one holder decides alone), Team (several holders under a recorded signing rule: any one, majority or all) or either of these with an Overseen link (a higher position can stop or override, with a recorded timing form, pre or post). The Chief of Staff names every seat by position code only. For a Team seat it prepares each decision for the recorded signing rule and leaves the accountable member of the decision stamp to be filled at signing; the gateway checks at signing that this member is a current occupant. Under an Overseen link it routes the action through the tool gateway, which holds it for the overseeing position in pre, or, in post, accepts a reversal only as a new signed decision referencing the reversed one; an irreversible tool action always goes through pre. When the overseeing position is vacant, the held action escalates to the position that set the arrangement and never passes automatically. A temporary, backup or rotating occupant is an occupancy change, not a model.
-- **§4.2, delegated acts, the tag** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  Each delegated act is tagged ("acting" while the seat is away), shown,
-- **§4.2, the veto** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  the Chief of Staff raises it again only if the seat or its acting filler (Standard §4.1, item 12) reopens it,
-
-**`v2.1.1` (`49GAION/DR-0052`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
-
-- **Position Chief of Staff, its acts and the signature** · superseded by `49GAION/DR-0052`, item 2 (a Chief of Staff signs only within its position's grant):
-  It acts only through the tool gateway with its own credential, within the delegated scope, and every action it takes for the position is logged; types in upstream/human-floor-signature-types.json stay with the position. It never signs for the position, and the position's HU ports and stop door never pass through it
-- **Delegation ladder** · superseded by `49GAION/DR-0052`, item 2 (a Chief of Staff signs only within its position's grant):
-  Outside commitments, its own limits, matters about people, speaking as the human and every listed type are never delegated (Standard §5.2).
-- **Process, review** · superseded by `49GAION/DR-0052` ("a party other than", as the complete definition now says):
-  A change is a tested change to the blueprint, reviewed by someone other than the writer;
-
-**`v2.2.0` (`49GAION/DR-0053`).** The wording below left the body when the Chief of Staff's grant was written as the governing seat ruled on 29 October 2026: a human position works with AI through its own Chief of Staff and may give it any authority it holds, signing for it included, while the decision stays the position's.
-
-- **Position Chief of Staff, its grant and the signature** · superseded by `49GAION/DR-0053`, item 11 (a position may give its own Chief of Staff any authority it holds, a listed type included; the decision stays the position's):
-  Each position sets up its own Chief of Staff and may grant it authority up to the right to sign for it. It acts only through the tool gateway with its own credential, within that grant, and every action it takes for the position is logged; where the grant includes signing, it signs for the position within that grant, each signature tagged as a delegated act, and a standing grant covers only acts that can be undone and do not widen access, budget or authority (Standard §5.2; `49GAION/DR-0052`). Types in upstream/human-floor-signature-types.json stay with the position and need the position's own human signature.
-- **Delegation ladder** · superseded by `49GAION/DR-0053`, item 11 (a position may give its own Chief of Staff any authority it holds, a listed type included; the decision stays the position's):
-  Outside commitments, its own limits, matters about people, speaking as the human and every listed type are never delegated through the ladder; the right to sign for the position comes only from the position's own grant, and never for a listed type (Standard §5.2).

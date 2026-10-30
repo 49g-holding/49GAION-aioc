@@ -1,6 +1,6 @@
 # What an AIOC is
 
-**Version `v2.2.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
+**Version `v2.2.1` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §5.1). Where this page and the Standard differ, the Standard governs.
 
 ## 1. Definition
 
@@ -112,32 +112,3 @@ Inside and between AIOCs:
 
 Sources: GOV, 14 October 2026.
 
-## Superseded wording, by version
-
-The wording below left the body of this text when it was written clean at `v2.0.0`. Each entry names what superseded it. Nothing is lost: the layered texts up to `v1.8.0` are kept at their tags.
-
-- **§2 Anatomy, table row Panel** · superseded by DR-0041 (reading), v2.0.0:
-  The only surface humans use.
-- **§2 Anatomy, table row Back office** · superseded by DR-0041 (reading), v2.0.0:
-  Human conversation with it goes through the Panel.
-- **§4 Types, last paragraph** · superseded by DR-0041 (reading), v2.0.0:
-  `[ORG]AIOC-OCO` (Organization Core Office) is the AI hub: every AIOC, at any depth, joins, is fixed, maintained and upgraded through it; it gives no orders on what work is done.
-- **§10 item 3** · superseded by v1.5.0 (label):
-  Every inner unit has its own card and blueprint
-- **§10 item 4** · superseded by DR-0041 (reading), v2.0.0:
-  Every AIOC, at any depth, joins, is fixed, maintained and upgraded through `[ORG]AIOC-OCO`.
-
-**`v2.1.0` (DR-0049).** The wording below left the body when this text was brought into line with the complete definition `v2.1.0` (DR-0048): every place in the system is an AIOC or a HOAC position, and the mechanism behind a position is the organisation's own.
-
-- **§5 item 5, the Chief of Staff** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  Whatever the filler, a Chief of Staff never signs for its person.
-
-**`v2.1.1` (`49GAION/DR-0052`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
-
-- **Human-led AIOC, the signature** · superseded by `49GAION/DR-0052`, item 2 (a Chief of Staff signs only within its position's grant):
-  Whatever the filler, a Chief of Staff never signs for the position it serves (DR-0049).
-
-**`v2.2.0` (`49GAION/DR-0053`).** The wording below left the body when the Chief of Staff's grant was written as the governing seat ruled on 29 October 2026: a human position works with AI through its own Chief of Staff and may give it any authority it holds, signing for it included, while the decision stays the position's.
-
-- **Human-led AIOC, the signature** · superseded by `49GAION/DR-0053`, item 11 (a position may give its own Chief of Staff any authority it holds, a listed type included; the decision stays the position's):
-  Whatever the filler, a Chief of Staff signs for the position it serves only within the grant that position has given it, and never a type of the Human Floor signature list (`49GAION/DR-0052`).

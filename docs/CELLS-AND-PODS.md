@@ -1,6 +1,6 @@
 # Cells and Pods
 
-**Version `v2.2.0` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
+**Version `v2.2.1` · approved by the governing seat (GOV) of 49GAION.** Part of the 49GAION Standard (`49g-holding/49GAION`, `upstream/49GAION-UPSTREAM.md` §1.7, §4.4). Where this page and the Standard differ, the Standard governs. Decision: `49GAION/DR-0004`.
 
 The AIOC is the only unit kind of 49GAION, and AIOCs nest to any depth. Inside an AIOC, its Blueprint holds two kinds of part: Cells and Pods.
 
@@ -65,41 +65,5 @@ The role and nature of a Pod or an AIOC are read from the type of its top Cell. 
 ## 5. Codes
 
 Every Pod and Cell has one fixed code and a separate `parent` field: `[ORG]POD-[INITIALS]`, `[ORG]CELL-[INITIALS]` (Naming Standard R14, R15). A code is never a path and carries no suffix. The card's machine form is `unit-card.schema.json` in `49g-holding/49GAION-protocol`.
-
-## Superseded wording, by version
-
-The wording below left the body of this text. Each entry names what superseded it.
-
-**`v2.1.0` (DR-0049).** The wording below left the body when this text was brought into line with the complete definition `v2.1.0` (DR-0048): every place in the system is an AIOC or a HOAC position, and the mechanism behind a position is the organisation's own.
-
-- **§1 item 2 (Seat and filler)** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **Seat and filler.** A Cell is a fixed seat. Its filler, a human or an AI agent, is replaceable. A change of filler is a recorded event in the unit register, never a new Cell, and the Cell keeps its code.
-- **§1 item 2, reading note** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **Reading note (GOV, 15 October 2026).** A human filler is present in the system as the seat, a position: a legal persona whose nature is human, which decides, signs and is accountable under the Cell's code. The natural person behind it exists outside the system's knowledge; only top management links the two, in its own record. The Cell's record stays with the seat when its occupant changes, as it does when an AI filler's engine or model changes (Standard §1.1, items 9 and 10).
-- **§1 item 6** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **A person's AI assistants.** The AI assistants of a person are separate registered AI Cells, each with its own code, attached to that person's Cell (`attached_to` on the card). They are never unnamed.
-- **§1 item 7, access** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  A filler gains access only after passing it;
-- **§1 item 9 (Attached Cells)** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  **Attached Cells (v1.5.0).** An attached AI Cell sits in the same Blueprint as the Cell it serves, has the same parent as that Cell and names its person's Cell in `attached_to`. It serves that seat only. When the filler changes, its memory of the previous filler is sealed. Whatever its filler, an attached Cell, including a Chief of Staff, never signs for its person (Protocol §4.10).
-- **§1 item 13, the holder** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  It never orders, sequences, hides or waits on the holder.
-- **§2 item 6 (Label holder or decision rule), with its reading note** · superseded by DR-0049 (the mechanism behind a position is the organisation's own, outside the system, under the complete definition `v2.1.0`, DR-0048), v2.1.0:
-  ```text
-  **Label holder or decision rule (v1.5.0).** A Pod with a HOAC label names its `label_holder`, one human Cell in it, or, when it decides together, a `decision_rule`: member Cells, quorum, majority, chair and casting vote. Each member signs under their own Cell; one person holding two seats in the same body counts once (Standard §4.1).
-  - **Reading note (GOV, 15 October 2026).** Two positions are two parties, even when one natural person occupies both (Standard §1.1, item 10). "One person holding two seats in the same body counts once" reads "each member Cell is its own party and counts once"; no AI part or check compares the persons behind member Cells.
-  ```
-
-**`v2.1.1` (`49GAION/DR-0052`).** The wording below left the body when two reviews of `v2.1.0` were checked against the complete definition and corrected.
-
-- **§1 item 9 (Attached Cells), the signature** · superseded by `49GAION/DR-0052`, item 2 (a Chief of Staff signs only within its position's grant):
-  Whatever its filler, an attached Cell, including a Chief of Staff, never signs for the position it serves (Protocol §4.10).
-- **Top Cell** · superseded by `49GAION/DR-0052` (a correction to the complete definition; no new rule): a label is held by one position (`49GAION/DR-0049`):
-  Co-leadership is a Pod with a decision rule.
-
-**`v2.2.0` (`49GAION/DR-0053`).** The wording below left the body when the Chief of Staff's grant was written as the governing seat ruled on 29 October 2026: a human position works with AI through its own Chief of Staff and may give it any authority it holds, signing for it included, while the decision stays the position's.
-
-- **§1 item 9 (Attached Cells), the signature** · superseded by `49GAION/DR-0053`, item 11 (a position may give its own Chief of Staff any authority it holds, a listed type included; the decision stays the position's):
-  Whatever its filler, an attached Cell, including a Chief of Staff, signs for the position it serves only within the grant that position has given it, and never a type of the Human Floor signature list (Standard §4.4, item 8; Protocol §4.10, items 6 and 7; `49GAION/DR-0052`).
 
 Powered by 49GAION
